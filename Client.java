@@ -54,7 +54,19 @@ public class Client
         }
         
     }
-
+  /**
+     * Delete a favourite product to the map 
+     *
+     * @param  product The product who will be added
+     * @return    0
+     */
+    public void DeleteProduct(Product product)
+    {
+        if(favouriteProducts.containsKey(product.getName())){
+            favouriteProducts.remove(product);
+        }
+        
+    }
 
     /**
      * Get name
