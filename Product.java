@@ -99,7 +99,20 @@ public class Product
     }
     
     public void PostComment(String comment, String nameClient, Integer points){
+        if( NotInList(nameClient)){
         Comments newComment = new Comments(comment, nameClient, points);
         commentsList.add(newComment);
+    }
+    }
+    
+    public boolean NotInList(String nameClient){
+        boolean aux = true; 
+        for (Comments comments : commentsList){
+            if(comments.getNameClient() == nameClient){
+                aux = false; 
+            }
+        }
+        return aux; 
+        
     }
 }

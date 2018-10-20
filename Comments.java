@@ -42,4 +42,38 @@ public class Comments
         // put your code here
        
     }
+    /**
+     * Get Text 
+     *
+     * @param  
+     * @return    text
+     */
+    public String getText()
+    {
+        return this.text; 
+       
+    }
+    
+    /**
+     * Get Name Client 
+     *
+     * @param  
+     * @return    nameClient 
+     */
+    public String getNameClient()
+    {
+        return this.nameClient; 
+       
+    }
+    /**
+     * Get Points 
+     *
+     * @param  
+     * @return    points
+     */
+    public Integer getPoints()
+    {
+        return this.points; 
+       
+    }
 }
