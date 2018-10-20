@@ -1,4 +1,5 @@
 import java.util.Collection;
+import java.util.HashMap; 
 /**
  * Write a description of class Client here.
  *
@@ -10,9 +11,10 @@ public class Client
     // instance variables - replace the example below with your own
 
     private String name;
-    private int id;
-    private int age;
+    private Integer id;
+    private Integer age;
     private String actualLocation;
+    private HashMap<Integer, Product> favouriteProducts; 
 
     /**
      * Constructor for objects of class Client
@@ -23,6 +25,7 @@ public class Client
         this.id=0;
         this.age=0;
         this.actualLocation="";
+        this.favouriteProducts = new HashMap<>(); 
 
     }
 
@@ -34,6 +37,7 @@ public class Client
         this.id=id;
         this.age=age;
         this.actualLocation=actualLocation;
+        this.favouriteProducts = new HashMap<>(); 
 
     }
 
