@@ -1,5 +1,7 @@
 import java.util.Collection;
 import java.util.HashMap; 
+import java.util.Map; 
+import java.util.Iterator; 
 /**
  * Write a description of class Client here.
  *
@@ -14,7 +16,7 @@ public class Client
     private Integer id;
     private Integer age;
     private String actualLocation;
-    private HashMap<String, Product> favouriteProducts; 
+    private Map<String, Product> favouriteProducts; 
 
     /**
      * Constructor for objects of class Client
@@ -148,4 +150,12 @@ public class Client
         this.actualLocation=actualLocation;
     }
     
+    
+    public void ShowProducts(){
+        
+        for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
+            System.out.println(entry.toString()); 
+        }
+    
+    }
 }
