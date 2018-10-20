@@ -54,7 +54,6 @@ public class StockManager
         Product productReturn=null;
         for (Product product : stock){
             if(product.getID()==id){
-                System.out.println("Producto encontrado");
                 productReturn = product;
                 printProductDetails();
             }
@@ -72,10 +71,9 @@ public class StockManager
     public int numberInStock(int id)
     {
         int quantity = 0; 
-        for (Product product : stock){
-            if(product.getID()==id){
-                quantity = quantity + product.getQuantity();         
-            }
+        Product ProductoEncontrado=findProduct(id);
+        if(ProductoEncontrado!=null){
+            quantity=ProductoEncontrado.getQuantity();
         }
         return quantity;
     }
