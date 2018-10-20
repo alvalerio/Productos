@@ -86,4 +86,21 @@ public class StockManager
             System.out.println(product.toString()); 
         }
     }
+    
+    /**
+     * Print details of all product who has less than the minimun
+     * number of quantity in stock 
+     *
+     * @param quantity The minimun quantity of a product
+     * @return 0.
+     */
+    public void LowStock(int quantity)
+    {
+       
+        for(Product product : stock){
+            if (product.getQuantity()<= quantity )
+            System.out.println(product.toString()); 
+        }
+       
+    }
 }
