@@ -37,6 +37,11 @@ public class StockManager
      */
     public void delivery(int id, int amount)
     {
+        for (Product product : stock){
+            if(product.getID()==id){
+                product.increaseQuantity(amount);     
+        }
+    }
     }
     
     /**
