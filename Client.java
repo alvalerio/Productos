@@ -164,8 +164,8 @@ public class Client
      * @param   product Product to be commented 
      * @return    
      */
-    public void PostComment(Product product, String comment, String nameClient, Integer points){
+    public void PostComment(Product product, String comment, Integer points){
         
-        product.PostComment(comment, nameClient, points);
+        product.PostComment(comment, this.name, points);
     }
 }

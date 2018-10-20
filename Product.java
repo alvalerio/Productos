@@ -102,6 +102,8 @@ public class Product
         if( NotInList(nameClient)){
         Comments newComment = new Comments(comment, nameClient, points);
         commentsList.add(newComment);
+    } else {
+        System.out.println("Error. The Client has alredy comment this product"); 
     }
     }
     
