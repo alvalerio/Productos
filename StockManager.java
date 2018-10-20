@@ -28,7 +28,7 @@ public class StockManager
     {
         stock.add(item);
     }
-    
+
     /**
      * Receive a delivery of a particular product.
      * Increase the quantity of the product by the given amount.
@@ -40,10 +40,10 @@ public class StockManager
         for (Product product : stock){
             if(product.getID()==id){
                 product.increaseQuantity(amount);     
+            }
         }
     }
-    }
-    
+
     /**
      * Try to find a product in the stock with the given id.
      * @return The identified product, or null if there is none
@@ -51,9 +51,17 @@ public class StockManager
      */
     public Product findProduct(int id)
     {
-        return null;
+        Product productReturn=null;
+        for (Product product : stock){
+            if(product.getID()==id){
+                System.out.println("Producto encontrado");
+                productReturn = product;
+                printProductDetails();
+            }
+        }
+        return productReturn;
     }
-    
+
     /**
      * Locate a product with the given ID, and return how
      * many of this item are in stock. If the ID does not
@@ -66,9 +74,9 @@ public class StockManager
         int quantity = 0; 
         for (Product product : stock){
             if(product.getID()==id){
-            quantity = quantity + product.getQuantity();         
+                quantity = quantity + product.getQuantity();         
+            }
         }
-    }
         return quantity;
     }
 
@@ -78,7 +86,7 @@ public class StockManager
     public void printProductDetails()
     {
         for(Product product : stock){
-           System.out.println(product.toString()); 
+            System.out.println(product.toString()); 
         }
     }
 }
