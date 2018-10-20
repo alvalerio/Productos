@@ -158,4 +158,14 @@ public class Client
         }
     
     }
+    /**
+     * Post a comment in determined products 
+     *
+     * @param   product Product to be commented 
+     * @return    
+     */
+    public void PostComment(Product product, String comment, String nameClient, Integer points){
+        
+        product.PostComment(comment, nameClient, points);
+    }
 }

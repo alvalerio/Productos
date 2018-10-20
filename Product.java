@@ -1,3 +1,4 @@
+import java.util.ArrayList; 
 /**
  * Model some details of a product sold by a company.
  * 
@@ -12,6 +13,8 @@ public class Product
     private String name;
     // The quantity of this product in stock.
     private int quantity;
+    // ArrayList of Comments 
+    private ArrayList<Comments> commentsList; 
 
     /**
      * Constructor for objects of class Product.
@@ -92,5 +95,10 @@ public class Product
             System.out.println(
                 "Attempt to sell an out of stock item: " + name);
         }
+    }
+    
+    public void PostComment(String comment, String nameClient, Integer points){
+        Comments newComment = new Comments(comment, nameClient, points);
+        commentsList.add(newComment);
     }
 }
