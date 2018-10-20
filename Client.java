@@ -14,7 +14,7 @@ public class Client
     private Integer id;
     private Integer age;
     private String actualLocation;
-    private HashMap<Integer, Product> favouriteProducts; 
+    private HashMap<String, Product> favouriteProducts; 
 
     /**
      * Constructor for objects of class Client
@@ -40,6 +40,21 @@ public class Client
         this.favouriteProducts = new HashMap<>(); 
 
     }
+
+    /**
+     * Add a favourite product to the map 
+     *
+     * @param  product The product who will be added
+     * @return    0
+     */
+    public void AddProduct(Product product)
+    {
+        if(!favouriteProducts.containsKey(product.getName())){
+            favouriteProducts.put(product.getName(), product);
+        }
+        
+    }
+
 
     /**
      * Get name
