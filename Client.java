@@ -206,7 +206,10 @@ public class Client
      * @return    
      */
     public void PostComment(Product product, String comment, Integer points){
-
+        if(!NotInMap(product)){
         product.PostComment(comment, this.name, points);
+    }else {
+            System.out.println("Error. You must add the product to favourite to comment"); 
+        }
     }
 }
