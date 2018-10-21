@@ -11,13 +11,16 @@ public class StockManager
 {
     // A list of the products.
     private ArrayList<Product> stock;
+    // A list of the orders.
+    private ArrayList<Product> order;
 
     /**
      * Initialise the stock manager.
      */
     public StockManager()
     {
-        stock = new ArrayList<Product>();
+        this.stock = new ArrayList<Product>();
+        this.order = new ArrayList<Product>();
     }
 
     /**

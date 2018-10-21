@@ -49,25 +49,67 @@ public class Client
      * @param  product The product who will be added
      * @return    0
      */
-    public void AddProduct(Product product)
+    public void AddProductFavourite(Product product)
     {
-        if(!favouriteProducts.containsKey(product.getName())){
-            favouriteProducts.put(product.getName(), product);
+
+        if(NotInMap(product)){
+            favouriteProducts.put(product.getName(), product);   
+        }else{
+            System.out.println("The product is alredy a favourite product");
         }
-        
+
     }
-  /**
+    public boolean NotInMap(Product product){
+        boolean aux=true;
+        for(Map.Entry<String,Product> entry : favouriteProducts.entrySet()){
+            if(entry.getKey()==product.getName()){
+                aux=false;
+            }
+        }
+        return aux;
+
+    }
+
+    /**
      * Delete a favourite product to the map 
      *
      * @param  product The product who will be added
      * @return    0
      */
-    public void DeleteProduct(Product product)
+    public void DeleteProductFavourite(Product product)
     {
-        if(favouriteProducts.containsKey(product.getName())){
-            favouriteProducts.remove(product);
+        if(!NotInMap(product)){
+            favouriteProducts.remove(product.getName());   
+        }else{
+            System.out.println("The product is not a favourite product");
         }
+
+    }
+
+    /**
+     * Hace un pedido de un producto favorito 
+     *
+     * @param  
+     * @return    0
+     */
+    public void HacerPedido( Product product){
+
         
+    }
+    /**
+     * Hace un pedido de un producto favorito 
+     *
+     * @param  
+     * @return    0
+     */
+    public boolean findProductFavourite(Product product){
+        boolean aux=false;
+        for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
+            if(favouriteProducts.containsKey(product.getName())){
+                aux=true;
+            }
+        }
+        return aux;
     }
 
     /**
@@ -149,15 +191,14 @@ public class Client
     public void setActualLocation(String actualLocation){
         this.actualLocation=actualLocation;
     }
-    
-    
+
     public void ShowProducts(){
-        
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
             System.out.println(entry.toString()); 
         }
-    
+
     }
+
     /**
      * Post a comment in determined products 
      *
@@ -165,7 +206,7 @@ public class Client
      * @return    
      */
     public void PostComment(Product product, String comment, Integer points){
-        
+
         product.PostComment(comment, this.name, points);
     }
 }

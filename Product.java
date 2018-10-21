@@ -8,13 +8,15 @@ import java.util.ArrayList;
 public class Product
 {
     // An identifying number for this product.
-    private int id;
+    private Integer id;
     // The name of this product.
     private String name;
     // The quantity of this product in stock.
-    private int quantity;
+    private Integer quantity;
     // ArrayList of Comments 
     private ArrayList<Comments> commentsList; 
+    //Stock of product
+    private Integer stockMin;
 
     /**
      * Constructor for objects of class Product.
@@ -22,18 +24,19 @@ public class Product
      * @param id The product's identifying number.
      * @param name The product's name.
      */
-    public Product(int id, String name)
+    public Product(Integer id, String name)
     {
         this.id = id;
         this.name = name;
         quantity = 0;
         this.commentsList = new ArrayList<Comments>(); 
+        this.stockMin=0;
     }
 
     /**
      * @return The product's id.
      */
-    public int getID()
+    public Integer getID()
     {
         return id;
     }
@@ -49,9 +52,15 @@ public class Product
     /**
      * @return The quantity in stock.
      */
-    public int getQuantity()
+    public Integer getQuantity()
     {
         return quantity;
+    }
+    /**
+     * @return The stock Min.
+     */
+    public Integer getStock(){
+        return this.stockMin;
     }
 
     /**
@@ -60,8 +69,8 @@ public class Product
     public String toString()
     {
         return id + ": " +
-               name +
-               " stock level: " + quantity;
+        name +
+        " stock level: " + quantity;
     }
 
     /**
@@ -70,16 +79,16 @@ public class Product
      * @param amount The number of new items added to the stock.
      *               This must be greater than zero.
      */
-    public void increaseQuantity(int amount)
+    public void increaseQuantity(Integer amount)
     {
         if(amount > 0) {
             quantity += amount;
         }
         else {
             System.out.println("Attempt to restock " +
-                               name +
-                               " with a non-positive amount: " +
-                               amount);
+                name +
+                " with a non-positive amount: " +
+                amount);
         }
     }
 
@@ -97,16 +106,16 @@ public class Product
                 "Attempt to sell an out of stock item: " + name);
         }
     }
-    
+
     public void PostComment(String comment, String nameClient, Integer points){
         if( NotInList(nameClient)){
-        Comments newComment = new Comments(comment, nameClient, points);
-        commentsList.add(newComment);
-    } else {
-        System.out.println("Error. The Client has alredy comment this product"); 
+            Comments newComment = new Comments(comment, nameClient, points);
+            commentsList.add(newComment);
+        } else {
+            System.out.println("Error. The Client has alredy comment this product"); 
+        }
     }
-    }
-    
+
     public boolean NotInList(String nameClient){
         boolean aux = true; 
         for (Comments comments : commentsList){
@@ -115,6 +124,6 @@ public class Product
             }
         }
         return aux; 
-        
+
     }
 }

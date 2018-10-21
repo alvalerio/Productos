@@ -19,29 +19,28 @@ public class Comments
         this.text = ""; 
         this.nameClient = ""; 
         this.points = 0; 
-       
+
     }
-/**
+
+    /**
      * Parametricsize Constructor for objects of class Comments
      */
     public Comments(String text, String nameClient, Integer points)
     {
         this.text = text; 
         this.nameClient = nameClient; 
-        this.points = points; 
-       
+        if(points<=0){
+            points=1;
+            this.points = points; 
+        }else if(points>5){
+            points=5;
+            this.points = points; 
+        }else{
+            this.points = points; 
+        }
+
     }
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public void sampleMethod(int y)
-    {
-        // put your code here
-       
-    }
+
     /**
      * Get Text 
      *
@@ -51,9 +50,9 @@ public class Comments
     public String getText()
     {
         return this.text; 
-       
+
     }
-    
+
     /**
      * Get Name Client 
      *
@@ -63,8 +62,9 @@ public class Comments
     public String getNameClient()
     {
         return this.nameClient; 
-       
+
     }
+
     /**
      * Get Points 
      *
@@ -74,6 +74,6 @@ public class Comments
     public Integer getPoints()
     {
         return this.points; 
-       
+
     }
 }
