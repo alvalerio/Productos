@@ -50,6 +50,22 @@ public class StockDemo
         
         Product mobile = manager.findProduct(37);
         mobile.ShowComments();
+        
+        System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
+        
+        client.MakeOrder("Movi", 30, manager);
+        
+        System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
+        
+        client.MakeOrder("Movi", 60, manager);
+        
+        System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
+        
+        client1.MakeOrder("Movi", 60, manager);
+        
+        System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
+        
+        client1.MakeOrder("Radio Reloj", 40, manager);
     }
     /**
      * Provide a very simple demonstration of how a StockManager

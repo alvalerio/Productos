@@ -33,6 +33,15 @@ public class StockManager
     }
 
     /**
+     * Add a product to the order list.
+     * @param item The item to be added.
+     */
+    public void addProductOrder(Product item)
+    {
+        order.add(item);
+    }
+
+    /**
      * Receive a delivery of a particular product.
      * Increase the quantity of the product by the given amount.
      * @param id The ID of the product.
@@ -43,6 +52,7 @@ public class StockManager
         Product ProductoEncontrado=findProduct(id);
         if(ProductoEncontrado!=null){
             ProductoEncontrado.increaseQuantity(amount);
+            System.out.println("Stock aumented with " + amount); 
         }
     }
 
@@ -88,7 +98,7 @@ public class StockManager
             System.out.println(product.toString()); 
         }
     }
-    
+
     /**
      * Print details of all product who has less than the minimun
      * number of quantity in stock 
@@ -96,13 +106,43 @@ public class StockManager
      * @param quantity The minimun quantity of a product
      * @return 0.
      */
-    public void LowStock(int quantity)
+    public boolean EnoughStock(Product product,int quantity)
     {
-       
-        for(Product product : stock){
-            if (product.getQuantity()<= quantity )
-            System.out.println(product.toString()); 
+        boolean aux = false; 
+
+        for(Product productstock : stock) {
+            if((product.getName() == productstock.getName()) && (quantity < productstock.getQuantity())){
+
+                aux=true;  
+
+            }
         }
-       
+        if(!aux){
+            System.out.println("There is not enough stock of " + product.getName() + " to make a order"); 
+            System.out.println("Stock in store : " + product.getQuantity()); 
+        } 
+
+        return aux; 
+    }
+
+    public void AddToOrder(Product product, Integer OrderQuantity){
+
+        if(EnoughStock(product, OrderQuantity)){
+            addProductOrder(product);
+            product.sellOrder(OrderQuantity);
+            System.out.println("Order done with success"); 
+            CheckStock(product); 
+        }
+    }
+
+    public void CheckStock(Product product){
+        if(numberInStock(product.getID()) < product.getStock()){
+            Integer amount = product.getStock() - product.getQuantity(); 
+            delivery(product.getID(), amount);
+            System.out.println("Products in stock: " + product.getQuantity()); 
+        }else{
+            System.out.println("There is enough stock of " + product.getName() + " to make a deliver");    
+        } 
+
     }
 }

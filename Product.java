@@ -27,7 +27,7 @@ public class Product
     {
         this.id = 0;
         this.name = "";
-        quantity = 0;
+        this.quantity = 0;
         this.commentsList = new ArrayList<Comments>(); 
         this.stockMin=0;
     }
@@ -41,9 +41,9 @@ public class Product
     {
         this.id = id;
         this.name = name;
-        quantity = 0;
+        this.quantity = 100;
         this.commentsList = new ArrayList<Comments>(); 
-        this.stockMin=0;
+        this.stockMin=50;
     }
 
     /**
@@ -67,7 +67,7 @@ public class Product
      */
     public Integer getQuantity()
     {
-        return quantity;
+        return this.quantity;
     }
     /**
      * @return The stock Min.
@@ -120,6 +120,23 @@ public class Product
         }
     }
 
+    /**
+     * Sell the list of order .
+     * An error is reported if there appears to be no stock.
+     */
+    public void sellOrder(Integer OrderQuantity)
+    {
+        if(quantity > OrderQuantity) {
+            quantity = quantity - OrderQuantity;
+             System.out.println(
+                "Sold: "+OrderQuantity +" of " + name + " Stock : " + quantity);
+        }
+        else {
+            System.out.println(
+                "Attempt to sell an out of stock item: " + name);
+        }
+    }
+    
     public void PostComment(String comment, String nameClient, Integer points){
         if( NotInList(nameClient)){
             Comments newComment = new Comments(comment, nameClient, points);

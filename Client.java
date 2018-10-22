@@ -228,4 +228,16 @@ public class Client
         
         return product; 
     }
+    
+    public void MakeOrder(String namebyClient, Integer OrderQuantity, StockManager SM){
+    
+        if(!NotInMap(namebyClient)){
+        Product product = new Product(); 
+        product = FindProductbyName(namebyClient);
+        SM.AddToOrder(product, OrderQuantity);
+        }else{
+         System.out.println("You only can order product whose is in your Favourite List");    
+        }
+    
+    }
 }
