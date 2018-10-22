@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-
+import java.util.Map; 
+import java.util.HashMap; 
 /**
  * Manage the stock in a business.
  * The stock is described by zero or more Products.
@@ -12,7 +13,7 @@ public class StockManager
     // A list of the products.
     private ArrayList<Product> stock;
     // A list of the orders.
-    private ArrayList<Product> order;
+    private Map<Integer, Product> order;
 
     /**
      * Initialise the stock manager.
@@ -20,7 +21,7 @@ public class StockManager
     public StockManager()
     {
         this.stock = new ArrayList<Product>();
-        this.order = new ArrayList<Product>();
+        this.order = new HashMap<Integer, Product>();
     }
 
     /**
@@ -36,9 +37,9 @@ public class StockManager
      * Add a product to the order list.
      * @param item The item to be added.
      */
-    public void addProductOrder(Product item)
+    public void addProductOrder(Integer OrderQuantity, Product item)
     {
-        order.add(item);
+        order.put(OrderQuantity, item);
     }
 
     /**
@@ -128,9 +129,9 @@ public class StockManager
     public void AddToOrder(Product product, Integer OrderQuantity){
 
         if(EnoughStock(product, OrderQuantity)){
-            addProductOrder(product);
+            addProductOrder(OrderQuantity, product);
             product.sellOrder(OrderQuantity);
-            System.out.println("Order done with success"); 
+            System.out.println("Order done with success. You have ordered " + OrderQuantity + " of " + product.getName()); 
             CheckStock(product); 
         }
     }
