@@ -17,7 +17,20 @@ public class Product
     private ArrayList<Comments> commentsList; 
     //Stock of product
     private Integer stockMin;
-
+/**
+     * Constructor for objects of class Product.
+     * The initial stock quantity is zero.
+     * 
+     * 
+     */
+    public Product()
+    {
+        this.id = 0;
+        this.name = "";
+        quantity = 0;
+        this.commentsList = new ArrayList<Comments>(); 
+        this.stockMin=0;
+    }
     /**
      * Constructor for objects of class Product.
      * The initial stock quantity is zero.

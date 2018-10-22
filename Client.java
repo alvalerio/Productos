@@ -49,20 +49,20 @@ public class Client
      * @param  product The product who will be added
      * @return    0
      */
-    public void AddProductFavourite(Product product)
+    public void AddProductFavourite(Product product, String namebyClient)
     {
 
-        if(NotInMap(product)){
-            favouriteProducts.put(product.getName(), product);   
+        if(NotInMap(namebyClient)){
+            favouriteProducts.put(namebyClient, product);   
         }else{
             System.out.println("The product is alredy a favourite product");
         }
 
     }
-    public boolean NotInMap(Product product){
+    public boolean NotInMap(String namebyClient){
         boolean aux=true;
         for(Map.Entry<String,Product> entry : favouriteProducts.entrySet()){
-            if(entry.getKey()==product.getName()){
+            if(entry.getKey()==namebyClient){
                 aux=false;
             }
         }
@@ -76,10 +76,10 @@ public class Client
      * @param  product The product who will be added
      * @return    0
      */
-    public void DeleteProductFavourite(Product product)
+    public void DeleteProductFavourite(String namebyClient)
     {
-        if(!NotInMap(product)){
-            favouriteProducts.remove(product.getName());   
+        if(!NotInMap(namebyClient)){
+            favouriteProducts.remove(namebyClient);   
         }else{
             System.out.println("The product is not a favourite product");
         }
@@ -205,11 +205,25 @@ public class Client
      * @param   product Product to be commented 
      * @return    
      */
-    public void PostComment(Product product, String comment, Integer points){
-        if(!NotInMap(product)){
-        product.PostComment(comment, this.name, points);
+    public void PostComment(String namebyClient, String comment, Integer points){
+        if(!NotInMap(namebyClient)){
+        Product product = new Product(); 
+        product = FindProductbyName(namebyClient);
+        product.PostComment(comment, namebyClient, points);
     }else {
             System.out.println("Error. You must add the product to favourite to comment"); 
         }
+    }
+    
+    public Product FindProductbyName(String namebyClient){
+        Product product = new Product(); 
+        for (Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
+            if(entry.getKey()==namebyClient){
+                product = entry.getValue();
+            }
+        }
+        
+        
+        return product; 
     }
 }
