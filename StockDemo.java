@@ -36,10 +36,11 @@ public class StockDemo
         client.AddProductFavourite(manager.findProduct(132),"Radio Reloj");  
         client.AddProductFavourite(manager.findProduct(37), "Movi");
         client.AddProductFavourite(manager.findProduct(23), "Microndas wapo");
+        client.AddProductFavourite(manager.findProduct(25), "Marihuana");
         client.ShowProducts();
         
         
-        Client client1 = new Client ("Federico",1235, 26, "Cabezuela");
+    /*    Client client1 = new Client ("Federico",1235, 26, "Cabezuela");
         client1.AddProductFavourite(manager.findProduct(132),"Radio Reloj");  
         client1.AddProductFavourite(manager.findProduct(23), "Microndas pepino");
         client1.ShowProducts();
@@ -66,6 +67,10 @@ public class StockDemo
         System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
         
         client1.MakeOrder("Radio Reloj", 40, manager);
+        */
+        System.out.println("TEST OF ORDER FAVOURITES/////////////////////////////////////////////////////////////");
+        
+        client.MakeOrderFavourites(manager);
     }
     /**
      * Provide a very simple demonstration of how a StockManager

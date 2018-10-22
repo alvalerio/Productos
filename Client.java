@@ -234,10 +234,20 @@ public class Client
         if(!NotInMap(namebyClient)){
         Product product = new Product(); 
         product = FindProductbyName(namebyClient);
-        SM.AddToOrder(product, OrderQuantity);
+        SM.AddToOrder(OrderQuantity, product);
         }else{
          System.out.println("You only can order product whose is in your Favourite List");    
         }
+    
+    }
+    
+    public void MakeOrderFavourites(StockManager SM){
+
+        HashMap favouriteOrder = new HashMap<Product, Integer>(); 
+        for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){            
+            favouriteOrder.put(entry.getValue(), 1);             
+        }
+        SM.FavouriteOrder(favouriteOrder);
     
     }
 }

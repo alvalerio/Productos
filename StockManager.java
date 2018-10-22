@@ -126,7 +126,7 @@ public class StockManager
         return aux; 
     }
 
-    public void AddToOrder(Product product, Integer OrderQuantity){
+    public void AddToOrder(Integer OrderQuantity, Product product){
 
         if(EnoughStock(product, OrderQuantity)){
             addProductOrder(OrderQuantity, product);
@@ -144,6 +144,24 @@ public class StockManager
         }else{
             System.out.println("There is enough stock of " + product.getName() + " to make a deliver");    
         } 
+
+    }
+
+    public boolean ProductInStock(Product product){
+        return stock.contains(product); 
+    }
+
+    public void FavouriteOrder(HashMap<Product, Integer> map){
+
+        for(Map.Entry<Product, Integer> entry : map.entrySet()){
+            if(ProductInStock(entry.getKey())){
+                System.out.println("The " + entry.getKey().getName() + " is now in order"); 
+                AddToOrder(entry.getValue(),entry.getKey());  
+            }else{
+               System.out.println("The " + entry.getKey().getName() + " is not avalible"); 
+            
+            }
+        }
 
     }
 }
