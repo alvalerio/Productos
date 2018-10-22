@@ -53,11 +53,10 @@ public class StockManager
      */
     public Product findProduct(int id)
     {
-        Product productReturn=null;
+        Product productReturn=new Product();
         for (Product product : stock){
             if(product.getID()==id){
-                productReturn = product;
-                printProductDetails();
+                productReturn = product;              
             }
         }
         return productReturn;

@@ -193,7 +193,9 @@ public class Client
     }
 
     public void ShowProducts(){
+        System.out.println("The list of favourite products: ");
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
+            
             System.out.println(entry.toString()); 
         }
 
@@ -209,7 +211,7 @@ public class Client
         if(!NotInMap(namebyClient)){
         Product product = new Product(); 
         product = FindProductbyName(namebyClient);
-        product.PostComment(comment, namebyClient, points);
+        product.PostComment(comment, this.name, points);
     }else {
             System.out.println("Error. You must add the product to favourite to comment"); 
         }

@@ -26,6 +26,32 @@ public class StockDemo
     }
     
     /**
+     * Create a StockManager and populate it with a few
+     * sample products.
+     */
+    public void StockDemoFavourite()
+    {
+        
+        Client client = new Client ("Sosa",1234, 25, "Garrovillas"); 
+        client.AddProductFavourite(manager.findProduct(132),"Radio Reloj");  
+        client.AddProductFavourite(manager.findProduct(37), "Movi");
+        client.AddProductFavourite(manager.findProduct(23), "Microndas wapo");
+        client.ShowProducts();
+        
+        
+        Client client1 = new Client ("Federico",1235, 26, "Cabezuela");
+        client1.AddProductFavourite(manager.findProduct(132),"Radio Reloj");  
+        client1.AddProductFavourite(manager.findProduct(23), "Microndas pepino");
+        client1.ShowProducts();
+        
+        client.PostComment("Movi", "Muchus megatronis", 6);
+        client1.PostComment("Movi", "Mu wenu", 2);
+        client.PostComment("Movi", "Muchus megatronis1", 3);
+        
+        Product mobile = manager.findProduct(37);
+        mobile.ShowComments();
+    }
+    /**
      * Provide a very simple demonstration of how a StockManager
      * might be used. Details of one product are shown, the
      * product is restocked, and then the details are shown again.

@@ -81,9 +81,9 @@ public class Product
      */
     public String toString()
     {
-        return id + ": " +
-        name +
-        " stock level: " + quantity;
+        return "id : "+ this.id + " Name : " +
+        this.name +
+        " stock level: " + this.quantity;
     }
 
     /**
@@ -140,5 +140,11 @@ public class Product
 
     }
     
+    public void ShowComments(){
+        
+        for (Comments comments : commentsList){
+            comments.ShowComment();             
+        }
     
+    }
 }

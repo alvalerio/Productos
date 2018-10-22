@@ -40,6 +40,13 @@ public class Comments
         }
 
     }
+    
+    public void ShowComment(){
+     
+        System.out.println("Client: " + this.nameClient); 
+        System.out.println("Comment: " + this.text); 
+        System.out.println("Points: " + this.points.toString()); 
+    }
 
     /**
      * Get Text 
