@@ -172,7 +172,12 @@ public class Client
     public void setActualLocation(String actualLocation){
         this.actualLocation=actualLocation;
     }
-
+    /**
+     * Show every pronduct in the favourite list of the client
+     *
+     * @param   
+     * @return    
+     */
     public void ShowProducts(){
         System.out.println("The list of favourite products: ");
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
@@ -186,7 +191,8 @@ public class Client
     /**
      * Post a comment in determined products 
      *
-     * @param   product Product to be commented 
+     * @param   product Product to be commented, String comment Comment to be posted, Integer points Points to rive [Range 1-5]
+     *     
      * @return    
      */
     public void PostComment(String namebyClient, String comment, Integer points){
@@ -199,7 +205,12 @@ public class Client
             System.out.println("Error. You must add the product to favourite to comment"); 
         }
     }
-
+    /**
+     * Find a Product by a name given by the client
+     *
+     * @param   String namebyClient A name given by the client to the product
+     * @return    
+     */
     public Product FindProductbyName(String namebyClient){
         Product product = new Product(); 
         for (Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
@@ -209,7 +220,15 @@ public class Client
         }
         return product; 
     }
-
+/**
+     * Make a order to the Store Manager of a product found using a name given by the client. 
+     * The quantity of the product may variate. 
+     *
+     * @param   String namebyClient A name given by the client to the product
+     *          Integer OrderQuantity The quantity to the product of the order
+     *          StockManager SM The Stock Manager who sells products  
+     * @return    
+     */
     public void MakeOrder(String namebyClient, Integer OrderQuantity, StockManager SM){
        
         if(!favouriteProducts.containsKey(namebyClient)){
@@ -221,7 +240,14 @@ public class Client
         }
 
     }
-
+/**
+     * Make a order to the Store Manager of a product found in the Favourite List of the client. 
+     * The quantity of the product is 1 of each. 
+     *
+     * @param   StockManager SM The Stock Manager who sells products  
+     *          
+     * @return    
+     */
     public void MakeOrderFavourites(StockManager SM){
 
         HashMap favouriteOrder = new HashMap<Product, Integer>(); 
