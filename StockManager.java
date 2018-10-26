@@ -147,14 +147,10 @@ public class StockManager
 
     }
 
-    public boolean ProductInStock(Product product){
-        return stock.contains(product); 
-    }
-
     public void FavouriteOrder(HashMap<Product, Integer> map){
 
         for(Map.Entry<Product, Integer> entry : map.entrySet()){
-            if(ProductInStock(entry.getKey())){
+            if(stock.contains(entry.getKey())){
                 System.out.println("The " + entry.getKey().getName() + " is now in order"); 
                 AddToOrder(entry.getValue(),entry.getKey());  
             }else{

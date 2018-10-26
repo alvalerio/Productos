@@ -138,7 +138,8 @@ public class Product
     }
     
     public void PostComment(String comment, String nameClient, Integer points){
-        if( NotInList(nameClient)){
+        if( commentsList.contains(nameClient)){
+            
             Comments newComment = new Comments(comment, nameClient, points);
             commentsList.add(newComment);
         } else {
@@ -146,16 +147,6 @@ public class Product
         }
     }
 
-    public boolean NotInList(String nameClient){
-        boolean aux = true; 
-        for (Comments comments : commentsList){
-            if(comments.getNameClient() == nameClient){
-                aux = false; 
-            }
-        }
-        return aux; 
-
-    }
     
     public void ShowComments(){
         

@@ -52,21 +52,11 @@ public class Client
     public void AddProductFavourite(Product product, String namebyClient)
     {
 
-        if(NotInMap(namebyClient)){
+        if(favouriteProducts.containsKey(namebyClient)){
             favouriteProducts.put(namebyClient, product);   
         }else{
             System.out.println("The product is alredy a favourite product");
         }
-
-    }
-    public boolean NotInMap(String namebyClient){
-        boolean aux=true;
-        for(Map.Entry<String,Product> entry : favouriteProducts.entrySet()){
-            if(entry.getKey()==namebyClient){
-                aux=false;
-            }
-        }
-        return aux;
 
     }
 
@@ -78,7 +68,7 @@ public class Client
      */
     public void DeleteProductFavourite(String namebyClient)
     {
-        if(!NotInMap(namebyClient)){
+        if(!favouriteProducts.containsKey(namebyClient)){
             favouriteProducts.remove(namebyClient);   
         }else{
             System.out.println("The product is not a favourite product");
@@ -86,16 +76,7 @@ public class Client
 
     }
 
-    /**
-     * Hace un pedido de un producto favorito 
-     *
-     * @param  
-     * @return    0
-     */
-    public void HacerPedido( Product product){
-
-        
-    }
+   
     /**
      * Hace un pedido de un producto favorito 
      *
@@ -195,12 +176,13 @@ public class Client
     public void ShowProducts(){
         System.out.println("The list of favourite products: ");
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
-            
+
             System.out.println(entry.toString()); 
         }
 
     }
 
+    
     /**
      * Post a comment in determined products 
      *
@@ -208,15 +190,16 @@ public class Client
      * @return    
      */
     public void PostComment(String namebyClient, String comment, Integer points){
-        if(!NotInMap(namebyClient)){
-        Product product = new Product(); 
-        product = FindProductbyName(namebyClient);
-        product.PostComment(comment, this.name, points);
-    }else {
+        
+        if(!favouriteProducts.containsKey(namebyClient)){
+            Product product = new Product(); 
+            product = FindProductbyName(namebyClient);
+            product.PostComment(comment, this.name, points);
+        }else {
             System.out.println("Error. You must add the product to favourite to comment"); 
         }
     }
-    
+
     public Product FindProductbyName(String namebyClient){
         Product product = new Product(); 
         for (Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
@@ -224,23 +207,21 @@ public class Client
                 product = entry.getValue();
             }
         }
-        
-        
         return product; 
     }
-    
+
     public void MakeOrder(String namebyClient, Integer OrderQuantity, StockManager SM){
-    
-        if(!NotInMap(namebyClient)){
-        Product product = new Product(); 
-        product = FindProductbyName(namebyClient);
-        SM.AddToOrder(OrderQuantity, product);
+       
+        if(!favouriteProducts.containsKey(namebyClient)){
+            Product product = new Product(); 
+            product = FindProductbyName(namebyClient);
+            SM.AddToOrder(OrderQuantity, product);
         }else{
-         System.out.println("You only can order product whose is in your Favourite List");    
+            System.out.println("You only can order product whose is in your Favourite List");    
         }
-    
+
     }
-    
+
     public void MakeOrderFavourites(StockManager SM){
 
         HashMap favouriteOrder = new HashMap<Product, Integer>(); 
@@ -248,6 +229,6 @@ public class Client
             favouriteOrder.put(entry.getValue(), 1);             
         }
         SM.FavouriteOrder(favouriteOrder);
-    
+
     }
 }
