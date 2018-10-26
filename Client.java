@@ -52,7 +52,7 @@ public class Client
     public void AddProductFavourite(Product product, String namebyClient)
     {
 
-        if(favouriteProducts.containsKey(namebyClient)){
+        if(!favouriteProducts.containsKey(namebyClient)){
             favouriteProducts.put(namebyClient, product);   
         }else{
             System.out.println("The product is alredy a favourite product");
