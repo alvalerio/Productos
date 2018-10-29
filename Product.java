@@ -144,13 +144,26 @@ public class Product
      * @param String nameClient The name of the client who want to comment.
      */
     public void PostComment(String comment, String nameClient, Integer points){
-        if( commentsList.contains(nameClient)){
+        
+        // !commentsList.contains(nameClient)
+        if(!HasCommented(nameClient)){
             
             Comments newComment = new Comments(comment, nameClient, points);
             commentsList.add(newComment);
+            
         } else {
             System.out.println("Error. The Client has alredy comment this product"); 
         }
+    }
+    
+    public boolean HasCommented(String nameClient){
+        boolean aux = false; 
+        for (Comments comment : commentsList){
+         if(comment.getNameClient() == nameClient){
+             aux=true; 
+            }   
+        }
+        return aux; 
     }
 
     /**

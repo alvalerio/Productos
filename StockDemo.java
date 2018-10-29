@@ -36,18 +36,28 @@ public class StockDemo
         client.AddProductFavourite(manager.findProduct(132),"Radio Reloj");  
         client.AddProductFavourite(manager.findProduct(37), "Movi");
         client.AddProductFavourite(manager.findProduct(23), "Microndas wapo");
-        client.AddProductFavourite(manager.findProduct(25), "Marihuana");
+       
+        
+        System.out.println("We show the products in favouirte list of Client1 ");
         client.ShowProducts();
         
         
-    /*    Client client1 = new Client ("Federico",1235, 26, "Cabezuela");
+        Client client1 = new Client ("Federico",1235, 26, "Cabezuela");
         client1.AddProductFavourite(manager.findProduct(132),"Radio Reloj");  
         client1.AddProductFavourite(manager.findProduct(23), "Microndas pepino");
+        
+        System.out.println("We show the products in favouirte list of Client2 ");
         client1.ShowProducts();
         
-        client.PostComment("Movi", "Muchus megatronis", 6);
-        client1.PostComment("Movi", "Mu wenu", 2);
+        
+        System.out.println("We TEST the Comments ");
+        
+        client.PostComment("Movi", "Muchus megatronis", 6);        
         client.PostComment("Movi", "Muchus megatronis1", 3);
+        client.PostComment("Movi", "Muchus megatronis2", -3);
+        
+        System.out.println("If the Client do not have the product in his favourite list ");
+        client1.PostComment("Movi", "Mu wenu", 2);
         
         Product mobile = manager.findProduct(37);
         mobile.ShowComments();
@@ -67,7 +77,7 @@ public class StockDemo
         System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
         
         client1.MakeOrder("Radio Reloj", 40, manager);
-        */
+         
         System.out.println("TEST OF ORDER FAVOURITES/////////////////////////////////////////////////////////////");
         
         client.MakeOrderFavourites(manager);

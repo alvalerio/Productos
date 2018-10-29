@@ -191,13 +191,15 @@ public class Client
     /**
      * Post a comment in determined products 
      *
-     * @param   product Product to be commented, String comment Comment to be posted, Integer points Points to rive [Range 1-5]
+     * @param   product Product to be commented
+     * @param   String comment Comment to be posted
+     * @param   Integer points Points to rive [Range 1-5]
      *     
      * @return    
      */
     public void PostComment(String namebyClient, String comment, Integer points){
         
-        if(!favouriteProducts.containsKey(namebyClient)){
+        if(favouriteProducts.containsKey(namebyClient)){
             Product product = new Product(); 
             product = FindProductbyName(namebyClient);
             product.PostComment(comment, this.name, points);
@@ -231,7 +233,7 @@ public class Client
      */
     public void MakeOrder(String namebyClient, Integer OrderQuantity, StockManager SM){
        
-        if(!favouriteProducts.containsKey(namebyClient)){
+        if(favouriteProducts.containsKey(namebyClient)){
             Product product = new Product(); 
             product = FindProductbyName(namebyClient);
             SM.AddToOrder(OrderQuantity, product);
