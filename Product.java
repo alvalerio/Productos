@@ -17,7 +17,7 @@ public class Product
     private ArrayList<Comments> commentsList; 
     //Stock of product
     private Integer stockMin;
-/**
+    /**
      * Constructor for objects of class Product.
      * The initial stock quantity is zero.
      * 
@@ -31,6 +31,7 @@ public class Product
         this.commentsList = new ArrayList<Comments>(); 
         this.stockMin=0;
     }
+
     /**
      * Constructor for objects of class Product.
      * The initial stock quantity is zero.
@@ -69,6 +70,7 @@ public class Product
     {
         return this.quantity;
     }
+
     /**
      * @return The stock Min.
      */
@@ -129,7 +131,7 @@ public class Product
     {
         if(quantity > OrderQuantity) {
             quantity = quantity - OrderQuantity;
-             System.out.println(
+            System.out.println(
                 "Sold: "+OrderQuantity +" of " + name + " Stock : " + quantity);
         }
         else {
@@ -137,6 +139,7 @@ public class Product
                 "Attempt to sell an out of stock item: " + name);
         }
     }
+
     /**
      * Post a comment in a product.
      * An error is reported if the client has alredy commented this product.
@@ -144,23 +147,28 @@ public class Product
      * @param String nameClient The name of the client who want to comment.
      */
     public void PostComment(String comment, String nameClient, Integer points){
-        
+
         // !commentsList.contains(nameClient)
         if(!HasCommented(nameClient)){
-            
+
             Comments newComment = new Comments(comment, nameClient, points);
             commentsList.add(newComment);
-            
+
         } else {
             System.out.println("Error. The Client has alredy comment this product"); 
         }
     }
-    
+    /**
+     * 
+     * @param String nameClient The name of the client who want to coment
+     * @return True if the client has commented
+     * 
+     */
     public boolean HasCommented(String nameClient){
         boolean aux = false; 
         for (Comments comment : commentsList){
-         if(comment.getNameClient() == nameClient){
-             aux=true; 
+            if(comment.getNameClient() == nameClient){
+                aux=true; 
             }   
         }
         return aux; 
@@ -171,10 +179,10 @@ public class Product
      *  
      */
     public void ShowComments(){
-        
+
         for (Comments comments : commentsList){
             comments.ShowComment();             
         }
-    
+
     }
 }

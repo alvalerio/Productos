@@ -114,9 +114,7 @@ public class StockManager
 
         for(Product productstock : stock) {
             if((product.getName() == productstock.getName()) && (quantity < productstock.getQuantity())){
-
                 aux=true;  
-
             }
         }
         if(!aux){
@@ -126,7 +124,12 @@ public class StockManager
 
         return aux; 
     }
-
+    /**
+     * Make a order with a specific quantity
+     * 
+     * @param Integer OrderQuantity The quantity of the product in a order  
+     * @param Product product
+     */
     public void AddToOrder(Integer OrderQuantity, Product product){
 
         if(EnoughStock(product, OrderQuantity)){
@@ -136,7 +139,11 @@ public class StockManager
             CheckStock(product); 
         }
     }
-
+    /**
+     * Calculate the difference that we need to increment to the stock
+     * 
+     * @param Product product
+     */
     public void CheckStock(Product product){
         if(numberInStock(product.getID()) < product.getStock()){
             Integer amount = product.getStock() - product.getQuantity(); 
@@ -147,7 +154,12 @@ public class StockManager
         } 
 
     }
-
+    
+    /**
+     * Go throught the map and go calling the method AddToOrder
+     * 
+     * @param HashMap map The map with the favourite products
+     */
     public void FavouriteOrder(HashMap<Product, Integer> map){
 
         for(Map.Entry<Product, Integer> entry : map.entrySet()){

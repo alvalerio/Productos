@@ -173,7 +173,7 @@ public class Client
         this.actualLocation=actualLocation;
     }
     /**
-     * Show every pronduct in the favourite list of the client
+     * Show every product in the favourite list of the client
      *
      * @param   
      * @return    

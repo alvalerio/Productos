@@ -26,8 +26,7 @@ public class StockDemo
     }
     
     /**
-     * Create a StockManager and populate it with a few
-     * sample products.
+     * 
      */
     public void StockDemoFavourite()
     {
