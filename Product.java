@@ -123,6 +123,7 @@ public class Product
     /**
      * Sell the list of order .
      * An error is reported if there appears to be no stock.
+     * @param Integer OrderQuantity The quantity of a product the client want to order
      */
     public void sellOrder(Integer OrderQuantity)
     {
@@ -136,7 +137,12 @@ public class Product
                 "Attempt to sell an out of stock item: " + name);
         }
     }
-    
+    /**
+     * Post a comment in a product.
+     * An error is reported if the client has alredy commented this product.
+     * @param Integer OrderQuantity The quantity of a product the client want to order.
+     * @param String nameClient The name of the client who want to comment.
+     */
     public void PostComment(String comment, String nameClient, Integer points){
         if( commentsList.contains(nameClient)){
             
@@ -147,7 +153,10 @@ public class Product
         }
     }
 
-    
+    /**
+     * Show all the comments that a product have.
+     *  
+     */
     public void ShowComments(){
         
         for (Comments comments : commentsList){
