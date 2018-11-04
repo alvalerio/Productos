@@ -30,7 +30,23 @@ public class StockManager
      */
     public void addProduct(Product item)
     {
-        stock.add(item);
+        if(!findProductBool(item)){
+            stock.add(item);
+        }else{
+            System.out.println("The product has alredy exists");
+        }
+    }
+    /**
+     * 
+     */
+    public boolean findProductBool(Product item){
+        boolean aux = false; 
+        for (Product product : stock){
+            if(product.getID()==item.getID()){
+                aux=true;
+            }
+        }
+        return aux;
     }
 
     /**
