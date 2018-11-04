@@ -109,7 +109,7 @@ public class StockManager
      * @param quantity The minimun quantity of a product
      * @return 0.
      */
-    public boolean EnoughStock(Product product,int quantity)
+    public boolean EnoughStock(Product product,Integer quantity)
     {
         boolean aux = false; 
 
