@@ -40,6 +40,16 @@ public class Product
      */
     public Product(Integer id, String name, Integer quantity, Integer stockMin)
     {
+        if(id<0){
+            id=id*(-1);
+        }
+        if(quantity<0){
+            quantity=quantity*(-1);
+        }
+
+         if(stockMin<0){
+            stockMin=stockMin*(-1);
+        }
         this.id = id;
         this.name = name;
         this.quantity = quantity;
