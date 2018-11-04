@@ -18,9 +18,6 @@ public class StockDemo
     public StockDemo()
     {
         sww = new StockManager();
-        //sww.addProduct(new Product(132, "Clock Radio"));
-        //sww.addProduct(new Product(37,  "Mobile Phone"));
-        //sww.addProduct(new Product(23,  "Microwave Oven"));
     }
     
     
@@ -104,79 +101,68 @@ public class StockDemo
     
     // DOES NOT EXIST 
     gameDP.findProductFavourite(figura16);
+    
+    //OUR TEST
+    System.out.println("OurTest");
+    gameDP.AddProductFavourite(sww.findProduct(3),"Leia");  
+    gameDP.AddProductFavourite(sww.findProduct(4), "Darth Vader");
+    gameDP.AddProductFavourite(sww.findProduct(9), "Kylo Ren");
+    System.out.println("We show the products in favouirte list of Client1 ");
+    gameDP.ShowProducts();
+    
+    Client gameDP1 = new Client("GameDP1", 124, 60, "Caceres");
+    gameDP1.AddProductFavourite(sww.findProduct(3),"Leia Organa");
+    gameDP1.AddProductFavourite(sww.findProduct(9), "Kylo");
+    System.out.println("We show the products in favouirte list of Client2 ");
+    gameDP1.ShowProducts();
+    
+    //Test Comments
+    System.out.println("We TEST the Comments ");
+    gameDP.PostComment("Darth Vader", "Very good product", 6);        
+    gameDP.PostComment("Darth Vader", "Bad product", 3);
+    gameDP.PostComment("Darth Vader", "Good product", -3);
+    
+    System.out.println("If the Client do not have the product in his favourite list ");
+    gameDP1.PostComment("Darth Vader", "Bad Product", 2);
+    
+    figura4.ShowComments();
+    
+    System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
+        
+    gameDP.MakeOrder("Darth Vader", 4, sww);
+    
+    System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
+        
+    gameDP.MakeOrder("Darth Vader", 6, sww);
+    
+    System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
+        
+    gameDP1.MakeOrder("Darth Vader", 6, sww);
+    
+    System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
+        
+    gameDP1.MakeOrder("Leia Organa", 4, sww);
+    
+    System.out.println("TEST OF ORDER FAVOURITES/////////////////////////////////////////////////////////////");
+        
+    gameDP.MakeOrderFavourites(sww);
+    
     }
     
-    /**
-     * 
-     */
-    /*
-    public void StockDemoFavourite()
-    {
-        
-        Client client = new Client ("Sosa",1234, 25, "Garrovillas"); 
-        client.AddProductFavourite(manager.findProduct(132),"Radio Reloj");  
-        client.AddProductFavourite(manager.findProduct(37), "Movi");
-        client.AddProductFavourite(manager.findProduct(23), "Microndas wapo");
-       
-        
-        System.out.println("We show the products in favouirte list of Client1 ");
-        client.ShowProducts();
-        
-        
-        Client client1 = new Client ("Federico",1235, 26, "Cabezuela");
-        client1.AddProductFavourite(manager.findProduct(132),"Radio Reloj");  
-        client1.AddProductFavourite(manager.findProduct(23), "Microndas pepino");
-        
-        System.out.println("We show the products in favouirte list of Client2 ");
-        client1.ShowProducts();
-        
-        
-        System.out.println("We TEST the Comments ");
-        
-        client.PostComment("Movi", "Muchus megatronis", 6);        
-        client.PostComment("Movi", "Muchus megatronis1", 3);
-        client.PostComment("Movi", "Muchus megatronis2", -3);
-        
-        System.out.println("If the Client do not have the product in his favourite list ");
-        client1.PostComment("Movi", "Mu wenu", 2);
-        
-        Product mobile = manager.findProduct(37);
-        mobile.ShowComments();
-        
-        System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
-        
-        client.MakeOrder("Movi", 30, manager);
-        
-        System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
-        
-        client.MakeOrder("Movi", 60, manager);
-        
-        System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
-        
-        client1.MakeOrder("Movi", 60, manager);
-        
-        System.out.println("TEST OF ORDER/////////////////////////////////////////////////////////////");
-        
-        client1.MakeOrder("Radio Reloj", 40, manager);
-         
-        System.out.println("TEST OF ORDER FAVOURITES/////////////////////////////////////////////////////////////");
-        
-        client.MakeOrderFavourites(manager);
-    }*/
+    
     /**
      * Provide a very simple demonstration of how a StockManager
      * might be used. Details of one product are shown, the
      * product is restocked, and then the details are shown again.
      */
-    /*public void demo()
+    public void demo()
     {
         // Show details of all of the products.
-        manager.printProductDetails();
+        sww.printProductDetails();
         // Take delivery of 5 items of one of the products.
-        manager.delivery(132, 5);
-        manager.printProductDetails();
+        sww.delivery(3, 5);
+        sww.printProductDetails();
     }
-    */
     /**
      * Show details of the given product. If found,
      * its name and stock quantity will be shown.
