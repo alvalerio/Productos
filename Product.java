@@ -34,7 +34,7 @@ public class Product
 
     /**
      * Constructor for objects of class Product.
-     * The initial stock quantity is zero.
+     * The initial stock quantity is 100.
      * @param id The product's identifying number.
      * @param name The product's name.
      */
@@ -48,6 +48,7 @@ public class Product
     }
 
     /**
+     * Get id
      * @return The product's id.
      */
     public Integer getID()
@@ -56,6 +57,7 @@ public class Product
     }
 
     /**
+     * Get name
      * @return The product's name.
      */
     public String getName()
@@ -64,6 +66,7 @@ public class Product
     }
 
     /**
+     * Get quantity
      * @return The quantity in stock.
      */
     public Integer getQuantity()
@@ -72,6 +75,7 @@ public class Product
     }
 
     /**
+     * Get the minimun stock
      * @return The stock Min.
      */
     public Integer getStock(){
@@ -79,6 +83,7 @@ public class Product
     }
 
     /**
+     * Show the id, name and the quantity in stock
      * @return The id, name and quantity in stock.
      */
     public String toString()

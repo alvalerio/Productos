@@ -58,7 +58,6 @@ public class Comments
     /**
      * Get Text 
      *
-     * @param  
      * @return    text
      */
     public String getText()
@@ -70,7 +69,6 @@ public class Comments
     /**
      * Get Name Client 
      *
-     * @param  
      * @return    nameClient 
      */
     public String getNameClient()
@@ -82,7 +80,6 @@ public class Comments
     /**
      * Get Points 
      *
-     * @param  
      * @return    points
      */
     public Integer getPoints()

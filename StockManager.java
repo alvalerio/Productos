@@ -105,6 +105,7 @@ public class StockManager
      * Print details of all product who has less than the minimun
      * number of quantity in stock 
      *
+     * @param product The product to search if there is enough stock
      * @param quantity The minimun quantity of a product
      * @return 0.
      */

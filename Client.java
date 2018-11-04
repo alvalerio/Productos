@@ -33,6 +33,10 @@ public class Client
 
     /**
      * Constructor Parametrized for objects of class Client
+     * @param name The client's name
+     * @param id The client's identifying number
+     * @param age The client's age 
+     * @param actualLocation The actual location of the client
      */
     public Client(String name, int id, int age, String actualLocation){
         this.name=name;
@@ -47,7 +51,7 @@ public class Client
      * Add a favourite product to the map 
      *
      * @param  product The product who will be added
-     * @return    0
+     * @param namebyClient The name that the client put to the product
      */
     public void AddProductFavourite(Product product, String namebyClient)
     {
@@ -63,8 +67,7 @@ public class Client
     /**
      * Delete a favourite product to the map 
      *
-     * @param  product The product who will be added
-     * @return    0
+     * @param  namebyClient The name of the product that you will remove
      */
     public void DeleteProductFavourite(String namebyClient)
     {
@@ -78,10 +81,9 @@ public class Client
 
    
     /**
-     * Hace un pedido de un producto favorito 
+     * Find a product in the map of favourite products
      *
-     * @param  
-     * @return    0
+     * @param  product The product that you want to find
      */
     public boolean findProductFavourite(Product product){
         boolean aux=false;
@@ -96,7 +98,6 @@ public class Client
     /**
      * Get name
      *
-     * @param  
      * @return    name
      */
     public String getName(){
@@ -105,8 +106,7 @@ public class Client
 
     /**
      * Get Id
-     *
-     * @param  
+     * 
      * @return    id
      */ 
     public int getId(){
@@ -116,7 +116,6 @@ public class Client
     /**
      * Get Age
      *
-     * @param  
      * @return    age
      */
     public int getAge(){
@@ -125,8 +124,7 @@ public class Client
 
     /**
      * Get ActualLocation
-     *
-     * @param  
+     * 
      * @return    actualLocation
      */
     public String getActualLocation(){
@@ -137,7 +135,6 @@ public class Client
      * Set Name
      *
      * @param  name
-     * @return    
      */
     public void setName(String name){
         this.name=name;
@@ -147,7 +144,6 @@ public class Client
      * Set Id
      *
      * @param  id
-     * @return    
      */ 
     public void setId(int id){
         this.id=id;
@@ -157,7 +153,6 @@ public class Client
      * Set Age
      *
      * @param  age
-     * @return    
      */
     public void setAge(int age){
         this.age=age;
@@ -167,16 +162,13 @@ public class Client
      * Set ActualLocation
      *
      * @param   actualLocation
-     * @return    
      */
     public void setActualLocation(String actualLocation){
         this.actualLocation=actualLocation;
     }
     /**
      * Show every product in the favourite list of the client
-     *
-     * @param   
-     * @return    
+     * 
      */
     public void ShowProducts(){
         System.out.println("The list of favourite products: ");
@@ -191,11 +183,10 @@ public class Client
     /**
      * Post a comment in determined products 
      *
-     * @param   product Product to be commented
-     * @param   String comment Comment to be posted
-     * @param   Integer points Points to rive [Range 1-5]
-     *     
-     * @return    
+     * @param   namebyClient A name given by the client to the product
+     * @param   comment Comment to be posted
+     * @param   points Points to rive [Range 1-5]
+     *       
      */
     public void PostComment(String namebyClient, String comment, Integer points){
         
@@ -210,8 +201,7 @@ public class Client
     /**
      * Find a Product by a name given by the client
      *
-     * @param   String namebyClient A name given by the client to the product
-     * @return    
+     * @param namebyClient A name given by the client to the product
      */
     public Product FindProductbyName(String namebyClient){
         Product product = new Product(); 
@@ -226,10 +216,9 @@ public class Client
      * Make a order to the Store Manager of a product found using a name given by the client. 
      * The quantity of the product may variate. 
      *
-     * @param   String namebyClient A name given by the client to the product
-     *          Integer OrderQuantity The quantity to the product of the order
-     *          StockManager SM The Stock Manager who sells products  
-     * @return    
+     * @param   namebyClient A name given by the client to the product
+     * @param   OrderQuantity The quantity to the product of the order
+     * @param   SM The Stock Manager who sells products     
      */
     public void MakeOrder(String namebyClient, Integer OrderQuantity, StockManager SM){
        
@@ -246,9 +235,7 @@ public class Client
      * Make a order to the Store Manager of a product found in the Favourite List of the client. 
      * The quantity of the product is 1 of each. 
      *
-     * @param   StockManager SM The Stock Manager who sells products  
-     *          
-     * @return    
+     * @param   SM The Stock Manager who sells products  
      */
     public void MakeOrderFavourites(StockManager SM){
 
