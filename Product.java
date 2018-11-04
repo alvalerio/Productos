@@ -38,13 +38,13 @@ public class Product
      * @param id The product's identifying number.
      * @param name The product's name.
      */
-    public Product(Integer id, String name)
+    public Product(Integer id, String name, Integer quantity, Integer stockMin)
     {
         this.id = id;
         this.name = name;
-        this.quantity = 100;
+        this.quantity = quantity;
         this.commentsList = new ArrayList<Comments>(); 
-        this.stockMin=50;
+        this.stockMin=stockMin;
     }
 
     /**

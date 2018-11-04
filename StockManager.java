@@ -65,11 +65,16 @@ public class StockManager
     public Product findProduct(int id)
     {
         Product productReturn=new Product();
-        
+        boolean aux = true; 
         for (Product product : stock){
             if(product.getID()==id){
-                productReturn = product;              
+                productReturn = product; 
+                aux = false; 
+                System.out.println(productReturn.toString()); 
             }
+        }
+        if(aux) {
+         System.out.println("The product does not exist");   
         }
         return productReturn;
     }

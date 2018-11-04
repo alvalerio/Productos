@@ -92,6 +92,9 @@ public class Client
                 aux=true;
             }
         }
+        if(!aux){
+             System.out.println("The product does not exist in the Favourite List");   
+        }
         return aux;
     }
 
