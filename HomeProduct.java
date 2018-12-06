@@ -15,7 +15,6 @@ public class HomeProduct extends Product
     public HomeProduct()
     {
         super(); 
-        this.discount=0f;
     }
 /**
      * Parametrized constructor for objects of class HomeProduct
