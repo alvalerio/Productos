@@ -15,15 +15,16 @@ public class FoodProduct extends Product
     {
         super();
         this.ExpirationMonth = ""; 
-
+        this.price=this.price-(this.price*0.10f);
     }
     
+
     /**
      * Parametrized constructor for objects of class FoodProduct
      */
-    public FoodProduct(Integer id, String name, Integer quantity, Integer stockMin, String ExpirationMonth)
+    public FoodProduct(Integer id, String name, Integer quantity, Integer stockMin, Float price, String ExpirationMonth)
     {
-        super(id,name,quantity,stockMin);
+        super(id,name,quantity,stockMin, price);
         this.ExpirationMonth = ExpirationMonth; 
 
     }
