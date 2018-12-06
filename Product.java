@@ -99,6 +99,20 @@ public class Product
     public Integer getStock(){
         return this.stockMin;
     }
+    /**
+     * Get the price
+     * @return The price of the product.
+     */
+    public Float getPrice(){
+        return this.price;
+    }
+    /**
+     * Get the discount
+     * @return The discount of the product.
+     */
+    public Float getDiscount(){
+        return this.discount;
+    }
 
     /**
      * Show the id, name and the quantity in stock
