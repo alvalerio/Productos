@@ -7,7 +7,6 @@
  */
 public class ClientVip extends Client
 {
-
     /**
      * Constructor for objects of class ClientVip
      */
