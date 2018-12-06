@@ -7,7 +7,9 @@ import java.util.ArrayList;
  */
 public class FoodProduct extends Product
 {
-    public String ExpirationMonth; 
+    private String ExpirationMonth; 
+    private Integer likes;
+    private Integer dislikes; 
     /**
      * Constructor for objects of class FoodProduct
      */

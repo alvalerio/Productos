@@ -8,7 +8,8 @@
 public class HomeProduct extends Product
 {
     private String homePart;
-
+    private Integer likes;
+    private Integer dislikes; 
     /**
      * Constructor for objects of class HomeProduct
      */
