@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class FoodProduct here.
  *
@@ -7,27 +7,26 @@
  */
 public class FoodProduct extends Product
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
+    public String ExpirationMonth; 
     /**
      * Constructor for objects of class FoodProduct
      */
     public FoodProduct()
     {
-        // initialise instance variables
-        x = 0;
-    }
+        super();
+        this.ExpirationMonth = ""; 
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
     }
+    
+    /**
+     * Parametrized constructor for objects of class FoodProduct
+     */
+    public FoodProduct(Integer id, String name, Integer quantity, Integer stockMin, String ExpirationMonth)
+    {
+        super(id,name,quantity,stockMin);
+        this.ExpirationMonth = ExpirationMonth; 
+
+    }
+    
+    
 }
