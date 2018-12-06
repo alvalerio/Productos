@@ -54,4 +54,18 @@ public class FoodProduct extends Product
     public String getExpirationMonth(){
         return this.ExpirationMonth;
     }
+    /**
+     * Get the likes
+     * @return The likes of the product.
+     */
+    public Integer getLikes(){
+        return this.likes;
+    }
+    /**
+     * Get the unlikes
+     * @return The unlikes of the product.
+     */
+    public Integer getUnlikes(){
+        return this.unlikes;
+    }
 }
