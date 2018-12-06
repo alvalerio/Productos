@@ -9,7 +9,7 @@ public class HomeProduct extends Product
 {
     private String homePart;
     private Integer likes;
-    private Integer dislikes; 
+    private Integer unlikes; 
     /**
      * Constructor for objects of class HomeProduct
      */
@@ -17,7 +17,7 @@ public class HomeProduct extends Product
     {
         super(); 
         this.likes = 0; 
-        this.dislikes = 0; 
+        this.unlikes = 0; 
     }
 /**
      * Parametrized constructor for objects of class HomeProduct
@@ -28,7 +28,15 @@ public class HomeProduct extends Product
         this.homePart = homePart; 
         this.discount=-0.05f;
         this.likes = 0; 
-        this.dislikes = 0; 
+        this.unlikes = 0; 
+    }
+    
+    public void Like(){
+        this.likes++;
+    }
+    
+    public void Unlike(){
+        this.unlikes++;
     }
     /**
      * Get the home part

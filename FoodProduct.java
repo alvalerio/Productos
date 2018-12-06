@@ -9,7 +9,7 @@ public class FoodProduct extends Product
 {
     private String ExpirationMonth; 
     private Integer likes;
-    private Integer dislikes; 
+    private Integer unlikes; 
     /**
      * Constructor for objects of class FoodProduct
      */
@@ -18,7 +18,7 @@ public class FoodProduct extends Product
         super();
         this.ExpirationMonth = ""; 
         this.likes = 0; 
-        this.dislikes = 0; 
+        this.unlikes = 0; 
         
     }
     
@@ -32,9 +32,15 @@ public class FoodProduct extends Product
         this.ExpirationMonth = ExpirationMonth; 
         this.discount=0.1f;
         this.likes = 0; 
-        this.dislikes = 0; 
+        this.unlikes = 0; 
 
     }
     
+        public void Like(){
+        this.likes++;
+    }
     
+    public void Unlike(){
+        this.unlikes++;
+    }
 }
