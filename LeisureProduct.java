@@ -15,7 +15,6 @@ public class LeisureProduct extends Product
     public LeisureProduct()
     {
         super();
-        this.discount=0f;
     }
    /**
      * Parametrized constructor for objects of class LeisureProduct

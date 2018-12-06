@@ -17,7 +17,7 @@ public class FoodProduct extends Product
     {
         super();
         this.ExpirationMonth = ""; 
-        this.discount=-0.1f;
+        
         
     }
     
