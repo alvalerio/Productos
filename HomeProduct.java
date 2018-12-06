@@ -16,6 +16,8 @@ public class HomeProduct extends Product
     public HomeProduct()
     {
         super(); 
+        this.likes = 0; 
+        this.dislikes = 0; 
     }
 /**
      * Parametrized constructor for objects of class HomeProduct
@@ -25,6 +27,7 @@ public class HomeProduct extends Product
         super(id,name,quantity,stockMin, price);
         this.homePart = homePart; 
         this.discount=-0.05f;
-
+        this.likes = 0; 
+        this.dislikes = 0; 
     }
 }

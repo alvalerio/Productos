@@ -17,7 +17,8 @@ public class FoodProduct extends Product
     {
         super();
         this.ExpirationMonth = ""; 
-        
+        this.likes = 0; 
+        this.dislikes = 0; 
         
     }
     
@@ -30,6 +31,8 @@ public class FoodProduct extends Product
         super(id,name,quantity,stockMin, price);
         this.ExpirationMonth = ExpirationMonth; 
         this.discount=0.1f;
+        this.likes = 0; 
+        this.dislikes = 0; 
 
     }
     
