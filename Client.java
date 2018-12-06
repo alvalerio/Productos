@@ -12,11 +12,11 @@ public class Client
 {
     // instance variables - replace the example below with your own
 
-    private String name;
-    private Integer id;
-    private Integer age;
-    private String actualLocation;
-    private Map<String, Product> favouriteProducts; 
+    protected String name;
+    protected Integer id;
+    protected Integer age;
+    protected String actualLocation;
+    protected Map<String, Product> favouriteProducts; 
 
     /**
      * Constructor for objects of class Client
