@@ -15,7 +15,8 @@ public class FoodProduct extends Product
     {
         super();
         this.ExpirationMonth = ""; 
-        this.price=this.price-(this.price*0.10f);
+        this.discount=this.price*0.1f;
+        
     }
     
 
@@ -26,6 +27,7 @@ public class FoodProduct extends Product
     {
         super(id,name,quantity,stockMin, price);
         this.ExpirationMonth = ExpirationMonth; 
+        this.discount=this.price*0.1f;
 
     }
     

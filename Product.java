@@ -19,6 +19,8 @@ public class Product
     private Integer stockMin;
     //Price of product
     protected Float price;
+    //Discount of product
+    protected Float discount;
     /**
      * Constructor for objects of class Product.
      * The initial stock quantity is zero.
@@ -33,6 +35,7 @@ public class Product
         this.commentsList = new ArrayList<Comments>(); 
         this.stockMin=0;
         this.price=0.0f;
+        this.discount=0.0f;
     }
 
     /**
@@ -59,6 +62,7 @@ public class Product
         this.commentsList = new ArrayList<Comments>(); 
         this.stockMin=stockMin;
         this.price=price;
+        this.discount=0.0f;
     }
 
     /**
