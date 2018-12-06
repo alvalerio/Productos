@@ -35,12 +35,23 @@ public class FoodProduct extends Product
         this.unlikes = 0; 
 
     }
-    
-        public void Like(){
+    /**
+     * Increase in 1 the likes
+     */
+    public void Like(){
         this.likes++;
     }
-    
+    /**
+     * Decrease in 1 the likes
+     */
     public void Unlike(){
         this.unlikes++;
+    }
+    /**
+     * Get the ExpirationMonth
+     * @return The ExpirationMonth of the food product.
+     */
+    public String getExpirationMonth(){
+        return this.ExpirationMonth;
     }
 }

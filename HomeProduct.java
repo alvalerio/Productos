@@ -30,17 +30,21 @@ public class HomeProduct extends Product
         this.likes = 0; 
         this.unlikes = 0; 
     }
-    
+    /**
+     * Increase in 1 the likes
+     */
     public void Like(){
         this.likes++;
     }
-    
+    /**
+     * Decrease in 1 the likes
+     */
     public void Unlike(){
         this.unlikes++;
     }
     /**
      * Get the home part
-     * @return The home part of home product.
+     * @return The home part that is applied the product.
      */
     public String getHomePart(){
         return this.homePart;
@@ -54,9 +58,9 @@ public class HomeProduct extends Product
     }
     /**
      * Get the unlikes
-     * @return The likes of the product.
+     * @return The unlikes of the product.
      */
     public Integer getUnlikes(){
-        return this.dislikes;
+        return this.unlikes;
     }
 }
