@@ -7,18 +7,16 @@
  */
 public class LeisureProduct extends Product
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    
 
     /**
      * Constructor for objects of class LeisureProduct
      */
     public LeisureProduct()
     {
-        // initialise instance variables
-        x = 0;
+        this.price=(this.price*0.2f)+this.price;
     }
-
+   
     /**
      * An example of a method - replace this comment with your own
      *
@@ -28,6 +26,6 @@ public class LeisureProduct extends Product
     public int sampleMethod(int y)
     {
         // put your code here
-        return x + y;
+        return  y;
     }
 }

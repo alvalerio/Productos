@@ -19,7 +19,7 @@ public class StockDemo
     {
         sww = new StockManager();
     }
-    
+    /*
     
     public void StarWarsDemo(){
     
@@ -148,7 +148,7 @@ public class StockDemo
     gameDP.MakeOrderFavourites(sww);
     
     }
-    
+    */
     
     /**
      * Provide a very simple demonstration of how a StockManager

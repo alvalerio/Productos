@@ -17,6 +17,8 @@ public class Product
     private ArrayList<Comments> commentsList; 
     //Stock of product
     private Integer stockMin;
+    //Price of product
+    protected Float price;
     /**
      * Constructor for objects of class Product.
      * The initial stock quantity is zero.
@@ -30,6 +32,7 @@ public class Product
         this.quantity = 0;
         this.commentsList = new ArrayList<Comments>(); 
         this.stockMin=0;
+        this.price=0.0f;
     }
 
     /**
@@ -38,7 +41,7 @@ public class Product
      * @param id The product's identifying number.
      * @param name The product's name.
      */
-    public Product(Integer id, String name, Integer quantity, Integer stockMin)
+    public Product(Integer id, String name, Integer quantity, Integer stockMin, Float price)
     {
         if(id<0){
             id=id*(-1);
@@ -55,6 +58,7 @@ public class Product
         this.quantity = quantity;
         this.commentsList = new ArrayList<Comments>(); 
         this.stockMin=stockMin;
+        this.price=price;
     }
 
     /**
