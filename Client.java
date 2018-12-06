@@ -196,7 +196,11 @@ public class Client
         if(favouriteProducts.containsKey(namebyClient)){
             Product product = new Product(); 
             product = FindProductbyName(namebyClient);
-            product.PostComment(comment, this.name, points);
+            if(product instanceof FoodProduct){
+                System.out.println("Error. The product is a FoodProduct so you musn't comment it");
+            }else{
+                product.PostComment(comment, this.name, points);
+            }
         }else {
             System.out.println("Error. You must add the product to favourite to comment"); 
         }

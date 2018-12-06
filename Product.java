@@ -98,9 +98,11 @@ public class Product
      */
     public String toString()
     {
+        
         return "id : "+ this.id + " Name : " +
         this.name +
         " stock level: " + this.quantity;
+        
     }
 
     /**
