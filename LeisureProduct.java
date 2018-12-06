@@ -15,7 +15,7 @@ public class LeisureProduct extends Product
     public LeisureProduct()
     {
         
-        this.discount=this.price*0.2f;
+        this.discount=0.2f;
     }
    
     /**

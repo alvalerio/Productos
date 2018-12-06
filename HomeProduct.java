@@ -15,7 +15,7 @@ public class HomeProduct extends Product
     public HomeProduct()
     {
         
-        this.discount=this.price*0.05f;
+        this.discount=-0.05f;
     }
 
     /**
