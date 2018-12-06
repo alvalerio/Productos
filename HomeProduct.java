@@ -7,25 +7,24 @@
  */
 public class HomeProduct extends Product
 {
-    
+    private String homePart;
 
     /**
      * Constructor for objects of class HomeProduct
      */
     public HomeProduct()
     {
-        
-        this.discount=-0.05f;
+        super(); 
+        this.discount=0f;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+/**
+     * Parametrized constructor for objects of class HomeProduct
      */
-    public int sampleMethod(int y)
+    public HomeProduct(Integer id, String name, Integer quantity, Integer stockMin, Float price, String homePart)
     {
-        return y;
+        super(id,name,quantity,stockMin, price);
+        this.homePart = homePart; 
+        this.discount=-0.05f;
+
     }
 }

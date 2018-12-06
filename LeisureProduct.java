@@ -14,19 +14,16 @@ public class LeisureProduct extends Product
      */
     public LeisureProduct()
     {
-        
-        this.discount=0.2f;
+        super();
+        this.discount=0f;
     }
-   
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+   /**
+     * Parametrized constructor for objects of class LeisureProduct
      */
-    public int sampleMethod(int y)
+    public LeisureProduct(Integer id, String name, Integer quantity, Integer stockMin, Float price)
     {
-        // put your code here
-        return  y;
+        super(id,name,quantity,stockMin, price);
+        this.discount=0.2f;
+
     }
 }
