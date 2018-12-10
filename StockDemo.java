@@ -17,7 +17,7 @@ public class StockDemo
      */
     public StockDemo()
     {
-        sww = new StockManager();
+        sww = sww.getInstance();
     }
     /*
     

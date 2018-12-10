@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Map; 
 import java.util.HashMap; 
+import java.util.Set; 
+import java.util.HashSet; 
 /**
  * Manage the stock in a business.
  * The stock is described by zero or more Products.
@@ -14,16 +16,39 @@ public class StockManager
     private ArrayList<Product> stock;
     // A list of the orders.
     private Map<Integer, Product> order;
-
+    // A *** of the Clients. 
+    private Set<Client> clientsSet; 
+    
+    //Singleton
+    private static StockManager SM; 
+    
     /**
      * Initialise the stock manager.
      */
-    public StockManager()
-    {
+    private StockManager()
+    {   
+     
         this.stock = new ArrayList<Product>();
         this.order = new HashMap<Integer, Product>();
+        this.clientsSet = new HashSet<Client>(); 
+    }
+    
+    
+    public static StockManager getInstance(){
+     
+        if(SM == null){
+            SM = new StockManager(); 
+        }/*else{
+         System.out.println("Already exist a instance of StockManager");    
+        }*/
+        
+     return SM;    
     }
 
+    public void AddClient(Client client){
+        clientsSet.add(client); 
+    }
+    
     /**
      * Add a product to the list.
      * @param item The item to be added.
