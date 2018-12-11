@@ -126,10 +126,28 @@ public class Cargador {
     private void crearEntertainmentProduct(int numCampos, List<String> vCampos){
         System.out.println("Creado EntertainmentProduct: " + vCampos.get(2) + "\n");
         //inicializar EntertainmentProduct
-        Product product = new EntertainmentProduct(Integer.parseInt(vCampos.get(1)),
+        /*Product product = new EntertainmentProduct(Integer.parseInt(vCampos.get(1)),
                 vCampos.get(2), Integer.parseInt(vCampos.get(3)),
                 Integer.parseInt(vCampos.get(4)), Integer.parseInt(vCampos.get(5)));
-        stockmanager.addProduct(product);
+        stockmanager.addProduct(product);*/
+        
+        try{
+            Product product = new EntertainmentProduct(Integer.parseInt(vCampos.get(1)),
+                vCampos.get(2), Integer.parseInt(vCampos.get(3)),
+                Integer.parseInt(vCampos.get(4)), Integer.parseInt(vCampos.get(5)));
+            stockmanager.addProduct(product);
+            
+        }catch(NumberFormatException e){
+            Float input2 = Float.parseFloat(vCampos.get(5));
+            Integer input1 = Integer.valueOf(input2.intValue());
+            
+            Product product = new EntertainmentProduct(Integer.parseInt(vCampos.get(1)),
+                vCampos.get(2), Integer.parseInt(vCampos.get(3)),
+                Integer.parseInt(vCampos.get(4)), input1);
+            stockmanager.addProduct(product);
+            
+        }
+        
     }
 
     /**
@@ -141,11 +159,11 @@ public class Cargador {
         System.out.println("Creado HomeProduct: " + vCampos.get(2) + "\n");
         //inicializar EntertainmentProduct
         try{
-         Product product = new HomeProduct(Integer.parseInt(vCampos.get(1)),
+             Product product = new HomeProduct(Integer.parseInt(vCampos.get(1)),
                 vCampos.get(2), Integer.parseInt(vCampos.get(3)),
                 Integer.parseInt(vCampos.get(4)), Integer.parseInt(vCampos.get(5)),
                 vCampos.get(6));
-        stockmanager.addProduct(product);
+             stockmanager.addProduct(product);
         
         }
         
@@ -153,12 +171,11 @@ public class Cargador {
              Float input2 = Float.parseFloat(vCampos.get(5));
              Integer input1 = Integer.valueOf(input2.intValue());
             
-            
-        Product product = new HomeProduct(Integer.parseInt(vCampos.get(1)),
+             Product product = new HomeProduct(Integer.parseInt(vCampos.get(1)),
                 vCampos.get(2), Integer.parseInt(vCampos.get(3)),
                 Integer.parseInt(vCampos.get(4)), input1,
                 vCampos.get(6));
-        stockmanager.addProduct(product);
+             stockmanager.addProduct(product);
         }
         /*Product product = new HomeProduct(Integer.parseInt(vCampos.get(1)),
                 vCampos.get(2), Integer.parseInt(vCampos.get(3)),
@@ -186,18 +203,17 @@ public class Cargador {
                 vCampos.get(2), Integer.parseInt(vCampos.get(3)),
                 Integer.parseInt(vCampos.get(4)), Integer.parseInt(vCampos.get(5)),
                 vCampos.get(6));
-        stockmanager.addProduct(product);
+            stockmanager.addProduct(product);
             
         }catch(NumberFormatException e){
             Float input2 = Float.parseFloat(vCampos.get(5));
-             Integer input1 = Integer.valueOf(input2.intValue());
-             
-             
+            Integer input1 = Integer.valueOf(input2.intValue());
+          
             Product product = new FoodProduct(Integer.parseInt(vCampos.get(1)),
                 vCampos.get(2), Integer.parseInt(vCampos.get(3)),
                 Integer.parseInt(vCampos.get(4)), input1,
                 vCampos.get(6));
-        stockmanager.addProduct(product);
+            stockmanager.addProduct(product);
         }
     }
 
@@ -212,6 +228,8 @@ public class Cargador {
         StandardClient client = new StandardClient(Integer.parseInt(vCampos.get(1)),
                 vCampos.get(2), Integer.parseInt(vCampos.get(3)), vCampos.get(4));
         stockmanager.addClient(client);
+      
+        
     }
 
     /**
