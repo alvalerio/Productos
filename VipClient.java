@@ -1,4 +1,4 @@
-
+import java.util.ArrayList; 
 /**
  * Write a description of class VipClient here.
  *
@@ -40,4 +40,17 @@ public class VipClient extends Client
         }else {
             System.out.println("Error. You must add the product to favourite to comment"); 
         }
-    }}
+    }
+    
+    
+    public ArrayList PrepareOrder(){
+        
+        ArrayList favouriteOrder = new ArrayList<Product>(); 
+        for(Product product : this.favouriteProducts.values()){
+            favouriteOrder.add(product);            
+        }
+    
+        return favouriteOrder; 
+    }
+    
+}

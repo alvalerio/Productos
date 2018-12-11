@@ -115,7 +115,7 @@ public class Cargador {
     private void crearStockManager(int numCampos, List<String> vCampos){
         System.out.println("Creado StockManager: " + vCampos.get(1) + "\n");
         //inicializar StockManager, cambiar por patron Singleton
-        stockmanager = new StockManager(vCampos.get(1));
+        stockmanager = stockmanager.getInstanceParametrized(vCampos.get(1)); /*new StockManager(vCampos.get(1));*/
     }
 
     /**

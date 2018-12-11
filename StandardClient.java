@@ -2,6 +2,7 @@ import java.util.Collection;
 import java.util.HashMap; 
 import java.util.Map; 
 import java.util.Iterator; 
+import java.util.ArrayList;
 /**
  * Write a description of class ClientStandar here.
  *
@@ -16,7 +17,7 @@ public class StandardClient extends Client
      */
     public StandardClient()
     {
-   super();
+     super();
     }
     
     /**
@@ -40,5 +41,12 @@ public class StandardClient extends Client
         }
         SM.FavouriteOrder(favouriteOrder);
 
+    }
+    
+    
+    public ArrayList PrepareOrder(){
+        ArrayList favouriteOrder = new ArrayList<Product>(); 
+        
+        return favouriteOrder; 
     }
 }

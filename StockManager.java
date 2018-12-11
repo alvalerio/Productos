@@ -35,7 +35,7 @@ public class StockManager
         this.clientsSet = new HashSet<Client>(); 
     }
     
-    public StockManager(String name){
+    private StockManager(String name){
      
         this.name=name; 
         this.stock = new ArrayList<Product>();
@@ -43,6 +43,13 @@ public class StockManager
         this.clientsSet = new HashSet<Client>();
     }
     
+    public static StockManager getInstanceParametrized(String name){
+        
+        if(SM == null){
+            SM = new StockManager(name); 
+        }
+        return SM ;
+    }
     
     public static StockManager getInstance(){
      
