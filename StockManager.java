@@ -12,6 +12,8 @@ import java.util.HashSet;
  */
 public class StockManager
 {
+    
+    private String name; 
     // A list of the products.
     private ArrayList<Product> stock;
     // A list of the orders.
@@ -27,10 +29,18 @@ public class StockManager
      */
     private StockManager()
     {   
-     
+        this.name = ""; 
         this.stock = new ArrayList<Product>();
         this.order = new HashMap<Integer, Product>();
         this.clientsSet = new HashSet<Client>(); 
+    }
+    
+    public StockManager(String name){
+     
+        this.name=name; 
+        this.stock = new ArrayList<Product>();
+        this.order = new HashMap<Integer, Product>();
+        this.clientsSet = new HashSet<Client>();
     }
     
     
@@ -45,7 +55,7 @@ public class StockManager
      return SM;    
     }
 
-    public void AddClient(Client client){
+    public void addClient(Client client){
         clientsSet.add(client); 
     }
     

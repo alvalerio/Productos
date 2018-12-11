@@ -22,11 +22,11 @@ public class HomeProduct extends Product
 /**
      * Parametrized constructor for objects of class HomeProduct
      */
-    public HomeProduct(Integer id, String name, Integer quantity, Integer stockMin, Float price, String homePart)
+    public HomeProduct(Integer id, String name, Integer quantity, Integer stockMin, Integer price, String homePart)
     {
-        super(id,name,quantity,stockMin, price);
+        super(id,name,quantity,stockMin, price);        
         this.homePart = homePart; 
-        this.discount=-0.05f;
+        //this.discount=-0.05f;
         this.likes = 0; 
         this.unlikes = 0; 
     }

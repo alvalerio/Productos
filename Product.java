@@ -8,17 +8,17 @@ import java.util.ArrayList;
 public class Product
 {
     // An identifying number for this product.
-    private Integer id;
+    protected Integer id;
     // The name of this product.
-    private String name;
+    protected String name;
     // The quantity of this product in stock.
-    private Integer quantity;
+    protected Integer quantity;
     // ArrayList of Comments 
-    private ArrayList<Comments> commentsList; 
+    protected ArrayList<Comments> commentsList; 
     //Stock of product
-    private Integer stockMin;
+    protected Integer stockMin;
     //Price of product
-    protected Float price;
+    protected Integer price;
     //Discount of product
     protected Float discount;
     /**
@@ -33,9 +33,9 @@ public class Product
         this.name = "";
         this.quantity = 0;
         this.commentsList = new ArrayList<Comments>(); 
-        this.stockMin=0;
-        this.price=0.0f;
-        this.discount=0.0f;
+        this.stockMin=0;        
+        this.price=0;
+        //this.discount=0.0f;
     }
 
     /**
@@ -44,7 +44,7 @@ public class Product
      * @param id The product's identifying number.
      * @param name The product's name.
      */
-    public Product(Integer id, String name, Integer quantity, Integer stockMin, Float price)
+    public Product(Integer id, String name, Integer quantity, Integer stockMin, Integer price)
     {
         if(id<0){
             id=id*(-1);
@@ -61,8 +61,15 @@ public class Product
         this.quantity = quantity;
         this.commentsList = new ArrayList<Comments>(); 
         this.stockMin=stockMin;
-        this.price=price;
-        this.discount=0.0f;
+        try{
+            this.price=price;
+        }
+        catch(NumberFormatException e){
+            this.price=Math.round(price); 
+            System.out.println(e.getMessage()); 
+        }
+        
+       // this.discount=0.0f;
     }
 
     /**
@@ -103,7 +110,7 @@ public class Product
      * Get the price
      * @return The price of the product.
      */
-    public Float getPrice(){
+    public Integer getPrice(){
         return this.price;
     }
     /**

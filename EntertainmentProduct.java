@@ -5,24 +5,24 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class LeisureProduct extends Product
+public class EntertainmentProduct extends Product
 {
     
 
     /**
      * Constructor for objects of class LeisureProduct
      */
-    public LeisureProduct()
+    public EntertainmentProduct()
     {
         super();
     }
    /**
      * Parametrized constructor for objects of class LeisureProduct
      */
-    public LeisureProduct(Integer id, String name, Integer quantity, Integer stockMin, Float price)
+    public EntertainmentProduct(Integer id, String name, Integer quantity, Integer stockMin, Integer price)
     {
         super(id,name,quantity,stockMin, price);
-        this.discount=0.2f;
+        //this.discount=0.2f;
 
     }
 }

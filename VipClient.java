@@ -1,20 +1,31 @@
 
 /**
- * Write a description of class ClientVip here.
+ * Write a description of class VipClient here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class ClientVip extends Client
+public class VipClient extends Client
 {
     /**
      * Constructor for objects of class ClientVip
      */
-    public ClientVip()
+    public VipClient()
     {
+        super();
+    }
+ /**
+     * Constructor Parametrized for objects of class Client
+     * @param name The client's name
+     * @param id The client's identifying number
+     * @param age The client's age 
+     * @param actualLocation The actual location of the client
+     */
+    
+    public VipClient(Integer id, String name, Integer age, String actualLocation){
+        super(id, name, age, actualLocation); 
 
     }
-
     @Override 
     public void PostComment(String namebyClient, String comment, Integer points){
 

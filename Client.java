@@ -38,7 +38,7 @@ public class Client
      * @param age The client's age 
      * @param actualLocation The actual location of the client
      */
-    public Client(String name, int id, int age, String actualLocation){
+    public Client(Integer id, String name, Integer age, String actualLocation){
         this.name=name;
         this.id=id;
         this.age=age;
@@ -243,7 +243,8 @@ public class Client
      * @param   SM The Stock Manager who sells products  
      */
     public void MakeOrderFavourites(StockManager SM){
-
+        
+        SM.getInstance(); 
         HashMap favouriteOrder = new HashMap<Product, Integer>(); 
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){            
             favouriteOrder.put(entry.getValue(), 1);             
