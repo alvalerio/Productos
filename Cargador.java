@@ -60,7 +60,7 @@ public class Cargador {
      *  @return stockmanager la instancia de la  clase StockManager
      */
     public StockManager obtenerStockManager (){
-        return stockmanager;
+        return stockmanager.getInstance();
     }
 
     /**
