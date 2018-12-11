@@ -26,7 +26,7 @@ public class HomeProduct extends Product
     {
         super(id,name,quantity,stockMin, price);        
         this.homePart = homePart; 
-        //this.discount=-0.05f;
+        this.discount=-0.05f;
         this.likes = 0; 
         this.unlikes = 0; 
     }

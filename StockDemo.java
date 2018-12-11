@@ -19,6 +19,22 @@ public class StockDemo
     {
         sww = sww.getInstance();
     }
+    
+    
+    public void Entrega2Demo(){
+     VipClient vip = new VipClient(); 
+     Product hp = new HomeProduct(1, "", 1,1, 100, ""); 
+     Product ep = new EntertainmentProduct(2, "", 1, 1, 100); 
+     Product fp = new FoodProduct(3, "", 1, 1, 100, ""); 
+     
+     vip.AddProductFavourite(hp, "hp");
+     vip.AddProductFavourite(ep, "ep");   
+     vip.AddProductFavourite(fp, "fp");   
+     
+     
+     System.out.println(vip.GetPriceOrder(vip.PrepareOrder())); 
+     
+    }
     /*
     
     public void StarWarsDemo(){

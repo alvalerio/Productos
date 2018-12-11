@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map; 
 import java.util.Iterator; 
 import java.util.ArrayList;
+import java.util.*; 
 /**
  * Write a description of class ClientStandar here.
  *
@@ -45,8 +46,14 @@ public class StandardClient extends Client
     
     
     public ArrayList PrepareOrder(){
+        ArrayList aux = new ArrayList<Product>(); 
         ArrayList favouriteOrder = new ArrayList<Product>(); 
-        
+        for(Product product : this.favouriteProducts.values()){
+            aux.add(product); 
+        }
+        Collections.sort(aux, Collections.reverseOrder(new PriceComparator())); 
+        favouriteOrder.add(aux.get(0)); 
+        favouriteOrder.add(aux.get(1)); 
         return favouriteOrder; 
     }
 }

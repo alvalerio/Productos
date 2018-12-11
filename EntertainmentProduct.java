@@ -22,7 +22,7 @@ public class EntertainmentProduct extends Product
     public EntertainmentProduct(Integer id, String name, Integer quantity, Integer stockMin, Integer price)
     {
         super(id,name,quantity,stockMin, price);
-        //this.discount=0.2f;
+        this.discount=0.2f;
 
     }
 }

@@ -53,4 +53,12 @@ public class VipClient extends Client
         return favouriteOrder; 
     }
     
+    public Float GetPriceOrder(ArrayList<Product> favouriteOrder){
+        Float totalPrice = 0.0f; 
+        for(Product product : favouriteOrder){
+            totalPrice += product.getPrice() + (product.getPrice()*product.getDiscount());            
+        }  
+        return totalPrice; 
+    }
+    
 }

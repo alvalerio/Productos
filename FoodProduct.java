@@ -30,7 +30,7 @@ public class FoodProduct extends Product
     {
         super(id,name,quantity,stockMin, price);
         this.ExpirationMonth = ExpirationMonth; 
-        //this.discount=0.1f;
+        this.discount=-0.1f;
         this.likes = 0; 
         this.unlikes = 0; 
 
@@ -68,4 +68,5 @@ public class FoodProduct extends Product
     public Integer getUnlikes(){
         return this.unlikes;
     }
+  
 }
