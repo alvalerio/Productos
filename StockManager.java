@@ -18,7 +18,7 @@ public class StockManager
     private ArrayList<Product> stock;
     // A list of the orders.
     private Map<Integer, Product> order;
-    // A *** of the Clients. 
+    // A set of the Clients. 
     private Set<Client> clientsSet; 
     
     //Singleton
