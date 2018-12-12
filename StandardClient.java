@@ -44,7 +44,6 @@ public class StandardClient extends Client
 
     }
     
-    
     public ArrayList PrepareOrder(){
         ArrayList aux = new ArrayList<Product>(); 
         ArrayList favouriteOrder = new ArrayList<Product>(); 
