@@ -60,7 +60,7 @@ public class Cargador {
      *  @return stockmanager la instancia de la  clase StockManager
      */
     public StockManager obtenerStockManager (){
-        return stockmanager.getInstance();
+        return StockManager.getInstance();
     }
 
     /**
@@ -115,7 +115,7 @@ public class Cargador {
     private void crearStockManager(int numCampos, List<String> vCampos){
         System.out.println("Creado StockManager: " + vCampos.get(1) + "\n");
         //inicializar StockManager, cambiar por patron Singleton
-        stockmanager = stockmanager.getInstanceParametrized(vCampos.get(1)); /*new StockManager(vCampos.get(1));*/
+        stockmanager = StockManager.getInstanceParametrized(vCampos.get(1)); /*new StockManager(vCampos.get(1));*/
     }
 
     /**

@@ -56,4 +56,24 @@ public class StandardClient extends Client
         favouriteOrder.add(aux.get(1)); 
         return favouriteOrder; 
     }
+    public Float GetPriceOrder(ArrayList<Product> favouriteOrder){
+        Float totalPrice = 0.0f;
+        for(Product product : favouriteOrder){
+            totalPrice += product.getPrice() + (product.getPrice()*product.getDiscount());
+        }
+        return totalPrice;
+    }
+    
+    public void MakeStandardOrder(ArrayList<Product> favouriteOrder){
+        StockManager SM=StockManager.getInstance();
+        
+        Integer aux=0;
+        for(Product product : favouriteOrder){
+            if(aux<2){
+            SM.MakeStandardOrder(product);
+            aux++;
+            }   
+        }
+        
+    }
 }

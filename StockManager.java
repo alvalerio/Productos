@@ -235,6 +235,14 @@ public class StockManager
             
             }
         }
-
+    }
+    
+    public void MakeVipOrder(ArrayList<Product> favouriteOrder){
+        for(Product product : favouriteOrder){
+            AddToOrder(1, product);
+        }
+    }
+    public void MakeStandardOrder(Product product){
+        AddToOrder(50, product);     
     }
 }

@@ -26,16 +26,20 @@ public class VipClient extends Client
         super(id, name, age, actualLocation); 
 
     }
-    @Override 
-    public void PostComment(String namebyClient, String comment, Integer points){
+    
+    public void PostComment(String namebyClient){
 
         if(favouriteProducts.containsKey(namebyClient)){
             Product product = new Product(); 
             product = FindProductbyName(namebyClient);
             if(product instanceof FoodProduct){
-                System.out.println("Error. The product is a FoodProduct so you musn't comment it");
+                System.out.println("Error. The product is a FoodProduct so you can't comment it");
             }else{
                 product.PostComment("I really like this product", this.name, 4);
+                if(product instanceof HomeProduct){
+                    HomeProduct hp = (HomeProduct)product;
+                    hp.Like();
+                }              
             }
         }else {
             System.out.println("Error. You must add the product to favourite to comment"); 
@@ -60,5 +64,14 @@ public class VipClient extends Client
         }  
         return totalPrice; 
     }
+    
+ 
+    public void MakeVipOrder(ArrayList<Product> favouriteOrder){
+        StockManager SM = StockManager.getInstance();
+       
+        SM.MakeVipOrder(favouriteOrder);
+    }
+    
+    
     
 }

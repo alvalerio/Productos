@@ -22,17 +22,56 @@ public class StockDemo
     
     
     public void Entrega2Demo(){
-     VipClient vip = new VipClient(); 
+  
+     System.out.println("Preparing the order...\n");   
+        
+     System.out.println("Getting the price of the order of a Vip Client...");
+     VipClient VipClient = new VipClient(); 
      Product hp = new HomeProduct(1, "", 1,1, 100, ""); 
      Product ep = new EntertainmentProduct(2, "", 1, 1, 100); 
      Product fp = new FoodProduct(3, "", 1, 1, 100, ""); 
+    
+     VipClient.AddProductFavourite(hp, "hp");
+     VipClient.AddProductFavourite(ep, "ep");   
+     VipClient.AddProductFavourite(fp, "fp");   
      
-     vip.AddProductFavourite(hp, "hp");
-     vip.AddProductFavourite(ep, "ep");   
-     vip.AddProductFavourite(fp, "fp");   
+     sww.addClient(VipClient);
+     sww.addProduct(hp);
+     sww.addProduct(ep);
+     sww.addProduct(fp);
+     System.out.println(VipClient.GetPriceOrder(VipClient.PrepareOrder())); 
      
      
-     System.out.println(vip.GetPriceOrder(vip.PrepareOrder())); 
+     System.out.println("Getting the price of the order of a Standard Client...");
+     
+     StandardClient StClient = new StandardClient();
+     Product Homep = new HomeProduct(4, "", 1,1, 1000, ""); 
+     Product Entertainmentp = new EntertainmentProduct(5, "", 1, 1, 100); 
+     Product Foodp = new FoodProduct(6, "", 1, 1, 10, ""); 
+     
+     
+     StClient.AddProductFavourite(Homep,"hps");
+     StClient.AddProductFavourite(Entertainmentp, "eps");   
+     StClient.AddProductFavourite(Foodp, "fps"); 
+     
+     sww.addClient(StClient);
+     sww.addProduct(Homep);
+     sww.addProduct(Entertainmentp);
+     sww.addProduct(Foodp);
+     System.out.println(StClient.GetPriceOrder(StClient.PrepareOrder())); 
+     
+     System.out.println("The price of all order has alredy calculated\n");
+     
+     System.out.println("Making the order...");
+     VipClient.MakeVipOrder(VipClient.PrepareOrder());
+     StClient.MakeStandardOrder(StClient.PrepareOrder());
+     System.out.println("Order done with success\n");
+     
+     System.out.println("Posting comments...");
+     VipClient.PostComment("hp");
+     VipClient.PostComment("ep");
+     VipClient.PostComment("fp");
+     
      
     }
     /*
