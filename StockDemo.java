@@ -91,6 +91,9 @@ public class StockDemo
      System.out.println("Getting more commented product ...");
      sww.getMostCommented();
      
+     
+     System.out.println("Getting best client");
+     sww.getBestClient(); 
     }
     /*
     
@@ -228,33 +231,33 @@ public class StockDemo
      * might be used. Details of one product are shown, the
      * product is restocked, and then the details are shown again.
      */
-    public void demo()
+  /*  public void demo()
     {
         // Show details of all of the products.
         sww.printProductDetails();
         // Take delivery of 5 items of one of the products.
         sww.delivery(3, 5);
         sww.printProductDetails();
-    }
+    }*/
     /**
      * Show details of the given product. If found,
      * its name and stock quantity will be shown.
      * @param id The ID of the product to look for.
      */
-    public void showDetails(int id)
+  /*  public void showDetails(int id)
     {
         Product product = getProduct(id);
         if(product != null) {
             System.out.println(product.toString());
         }
-    }
+    }/*
     
     /**
      * Sell one of the given item.
      * Show the before and after status of the product.
      * @param id The ID of the product being sold.
      */
-    public void sellProduct(int id)
+   /* public void sellProduct(int id)
     {
         Product product = getProduct(id);
         
@@ -263,7 +266,7 @@ public class StockDemo
             product.sellOne();
             showDetails(id);
         }
-    }
+    }*/
     
     /**
      * Get the product with the given id from the manager.
@@ -272,7 +275,7 @@ public class StockDemo
      * @return The Product, or null if no matching one is found.
      */
    
-    public Product getProduct(int id)
+   /* public Product getProduct(int id)
     {
         Product product = sww.findProduct(id);
         if(product == null) {
@@ -280,7 +283,7 @@ public class StockDemo
                                " is not recognised.");
         }
         return product;
-    }
+    }/*
 
     /**
      * @return The stock manager.

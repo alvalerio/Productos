@@ -18,6 +18,7 @@ public class Client
     protected Integer age;
     protected String actualLocation;
     protected Map<String, Product> favouriteProducts; 
+    protected Float moneySpent; 
 
     /**
      * Constructor for objects of class Client
@@ -29,6 +30,7 @@ public class Client
         this.age=0;
         this.actualLocation="";
         this.favouriteProducts = new HashMap<>(); 
+        this.moneySpent= 0.0f; 
 
     }
 
@@ -45,6 +47,7 @@ public class Client
         this.age=age;
         this.actualLocation=actualLocation;
         this.favouriteProducts = new HashMap<>(); 
+        this.moneySpent= 0.0f; 
 
     }
 
@@ -125,7 +128,14 @@ public class Client
     public int getAge(){
         return this.age;
     }
-
+ /**
+     * Get moneySpent
+     *
+     * @return   moneySpent
+     */
+    public Float getMoneySpent(){
+        return this.moneySpent;
+    }
     /**
      * Get ActualLocation
      * 

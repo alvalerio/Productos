@@ -68,7 +68,7 @@ public class VipClient extends Client
  
     public void MakeVipOrder(ArrayList<Product> favouriteOrder){
         StockManager SM = StockManager.getInstance();
-       
+        this.moneySpent += this.GetPriceOrder(favouriteOrder); 
         SM.MakeVipOrder(favouriteOrder);
     }
     

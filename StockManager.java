@@ -3,6 +3,7 @@ import java.util.Map;
 import java.util.HashMap; 
 import java.util.Set; 
 import java.util.HashSet; 
+import java.util.Iterator; 
 /**
  * Manage the stock in a business.
  * The stock is described by zero or more Products.
@@ -17,7 +18,7 @@ public class StockManager
     // A list of the products.
     private ArrayList<Product> stock;
     // A list of the orders.
-    private Map<Integer, Product> order;
+    private Map<Product, Integer> order;
     // A set of the Clients. 
     private Set<Client> clientsSet; 
     
@@ -33,7 +34,7 @@ public class StockManager
     {   
         this.name = ""; 
         this.stock = new ArrayList<Product>();
-        this.order = new HashMap<Integer, Product>();
+        this.order = new HashMap<Product, Integer>();
         this.clientsSet = new HashSet<Client>(); 
         this.defaultComments = new ArrayList<String>(); 
         InitializeDefaultComments();
@@ -44,7 +45,7 @@ public class StockManager
      
         this.name=name; 
         this.stock = new ArrayList<Product>();
-        this.order = new HashMap<Integer, Product>();
+        this.order = new HashMap<Product, Integer>();
         this.clientsSet = new HashSet<Client>();
         this.defaultComments = new ArrayList<String>(); 
         InitializeDefaultComments();
@@ -85,16 +86,31 @@ public class StockManager
             System.out.println("The product has alredy exists");
         }
     }
+    
+    /**
+     * Delete a product to the list.
+     * @param item The item to be deleted.
+     */
+    public void deleteProduct(Product item)
+    {
+        if(findProductBool(item)){
+            stock.remove(item);
+        }else{
+            System.out.println("The product has alredy deleted");
+        }
+    }
     /**
      * 
      */
     public boolean findProductBool(Product item){
         boolean aux = false; 
-        for (Product product : stock){
-            if(product.getID()==item.getID()){
-                aux=true;
-            }
+        Iterator<Product> it = stock.iterator(); 
+        while(it.hasNext() && !aux){
+            Product product = it.next(); 
+            if(product.equals(item)){
+                aux=true;       
         }
+    }
         return aux;
     }
 
@@ -104,8 +120,19 @@ public class StockManager
      */
     public void addProductOrder(Integer OrderQuantity, Product item)
     {
-        order.put(OrderQuantity, item);
+        boolean aux = false; 
+        for(Map.Entry<Product, Integer> entry : order.entrySet()){
+            if(item.equals(entry.getKey())){
+                aux=true; 
+                Integer aux1 = entry.getValue() + OrderQuantity;
+                entry.setValue(aux1);
+                item.AddSold(OrderQuantity); 
+            }
+        }
+        if(!aux){
+        order.put(item, OrderQuantity);
         item.AddSold(OrderQuantity);
+        }
     }
 
     /**
@@ -114,9 +141,9 @@ public class StockManager
      * @param id The ID of the product.
      * @param amount The amount to increase the quantity by.
      */
-    public void delivery(int id, int amount)
+    public void delivery(Product product, int amount)
     {
-        Product ProductoEncontrado=findProduct(id);
+        Product ProductoEncontrado=findProduct(product);
         if(ProductoEncontrado!=null){
             ProductoEncontrado.increaseQuantity(amount);
             System.out.println("Stock aumented with " + amount); 
@@ -128,12 +155,15 @@ public class StockManager
      * @return The identified product, or null if there is none
      *         with a matching ID.
      */
-    public Product findProduct(int id)
+    public Product findProduct(Product item)
     {
         Product productReturn=new Product();
-        boolean aux = true; 
-        for (Product product : stock){
-            if(product.getID()==id){
+        boolean aux = true;
+        Iterator<Product> it = stock.iterator(); 
+
+        while(it.hasNext() && aux){
+            Product product = it.next(); 
+            if(product.equals(item)){
                 productReturn = product; 
                 aux = false; 
                 System.out.println(productReturn.toString()); 
@@ -141,6 +171,28 @@ public class StockManager
         }
         if(aux) {
          System.out.println("The product does not exist");   
+        }
+        return productReturn;
+    }
+    
+    /**
+     * Try to find a product in the stock with the given id.
+     * @return The identified product, or null if there is none
+     *         with a matching ID.
+     */
+    public Product getProduct(Integer id)
+    {
+        boolean aux = true;
+        Product productReturn = new Product(); 
+        for(Product product : stock){    
+            if(id == product.getID()){            
+                productReturn = product; 
+                aux = false; 
+            }
+        }
+        if(aux) {
+         System.out.println("The product does not exist");   
+         return null; 
         }
         return productReturn;
     }
@@ -152,10 +204,10 @@ public class StockManager
      * @param id The ID of the product.
      * @return The quantity of the given product in stock.
      */
-    public int numberInStock(int id)
+    public int numberInStock(Product product)
     {
         int quantity = 0; 
-        Product ProductoEncontrado=findProduct(id);
+        Product ProductoEncontrado=findProduct(product);
         if(ProductoEncontrado!=null){
             quantity=ProductoEncontrado.getQuantity();
         }
@@ -217,9 +269,9 @@ public class StockManager
      * @param Product product
      */
     public void CheckStock(Product product){
-        if(numberInStock(product.getID()) < product.getStock()){
+        if(numberInStock(product) < product.getStock()){
             Integer amount = product.getStock() - product.getQuantity(); 
-            delivery(product.getID(), amount);
+            delivery(product, amount);
             System.out.println("Products in stock: " + product.getQuantity()); 
         }else{
             System.out.println("There is enough stock of " + product.getName() + " to make a deliver");    
@@ -278,4 +330,35 @@ public class StockManager
         System.out.println("The product more commented is:" + p.getName()); 
     }
     
+    
+    public Client getBestClient(){
+        
+        Client bestClient = new Client(); 
+        Float aux = 0.0f; 
+        
+        for(Client client : clientsSet){
+            if( client.getMoneySpent() > aux){
+                bestClient = client; 
+                aux = client.getMoneySpent(); 
+            }                         
+        }
+        
+        
+        System.out.println("The client who spent more money is " + bestClient.getName()); 
+        
+        return bestClient; 
+    }
+    
+    
+    public Product getMostSold(){
+        Product mostSold = new Product(); 
+        for (Map.Entry<Product, Integer> entry : order.entrySet()){
+            if(entry.getValue() > mostSold.getSoldCount()){
+                mostSold = entry.getKey(); 
+            }
+            
+        }
+        System.out.println("The best sold product is  " + mostSold.getName());
+        return mostSold; 
+    }
 }
