@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Map; 
 import java.util.HashMap; 
@@ -19,8 +20,8 @@ public class StockManager
     private ArrayList<Product> stock;
     // A list of the orders.
     private Map<Product, Integer> order;
-    // A set of the Clients. 
-    private Set<Client> clientsSet; 
+    // An arrayList of the Clients. 
+    private ArrayList<Client> clientsList; 
     
     //Singleton
     private static StockManager SM; 
@@ -35,7 +36,7 @@ public class StockManager
         this.name = ""; 
         this.stock = new ArrayList<Product>();
         this.order = new HashMap<Product, Integer>();
-        this.clientsSet = new HashSet<Client>(); 
+        this.clientsList = new ArrayList<Client>();
         this.defaultComments = new ArrayList<String>(); 
         InitializeDefaultComments();
         
@@ -46,7 +47,7 @@ public class StockManager
         this.name=name; 
         this.stock = new ArrayList<Product>();
         this.order = new HashMap<Product, Integer>();
-        this.clientsSet = new HashSet<Client>();
+        this.clientsList = new ArrayList<Client>(); 
         this.defaultComments = new ArrayList<String>(); 
         InitializeDefaultComments();
     }
@@ -71,7 +72,11 @@ public class StockManager
     }
 
     public void addClient(Client client){
-        clientsSet.add(client); 
+        if(!clientsList.contains(client)){
+        clientsList.add(client); 
+        }else{
+            System.out.println("The Client has alredy exists");
+        }
     }
     
     /**
@@ -124,8 +129,11 @@ public class StockManager
         for(Map.Entry<Product, Integer> entry : order.entrySet()){
             if(item.equals(entry.getKey())){
                 aux=true; 
-                Integer aux1 = entry.getValue() + OrderQuantity;
-                entry.setValue(aux1);
+                Integer aux1 =0;
+                aux1=entry.getValue() + OrderQuantity;
+                System.out.println("ORDER QUANTITY :" + OrderQuantity); 
+                System.out.println("AUX1 :" + aux1); 
+                entry.setValue(aux1);                 
                 item.AddSold(OrderQuantity); 
             }
         }
@@ -166,7 +174,6 @@ public class StockManager
             if(product.equals(item)){
                 productReturn = product; 
                 aux = false; 
-                System.out.println(productReturn.toString()); 
             }
         }
         if(aux) {
@@ -232,22 +239,15 @@ public class StockManager
      * @param quantity The minimun quantity of a product
      * @return 0.
      */
-    public boolean EnoughStock(Product product,Integer quantity)
+    public void EnoughStock(Product product,Integer orderQuantity)
     {
         boolean aux = false; 
-
-        for(Product productstock : stock) {
-            if((product.getName() == productstock.getName()) && (quantity < productstock.getQuantity())){
-                aux=true;  
-            }
-        }
-        if(!aux){
-            System.out.println("There is not enough stock of " + product.getName() + " to make a order"); 
-            System.out.println("Stock in store : " + product.getQuantity()); 
-        } 
-
-        return aux; 
-    }
+        Integer difference = orderQuantity - product.getQuantity();
+        
+        if(difference >= 0){
+            delivery(product, (product.getQuantity() - product.getStock()) + orderQuantity);                 
+    }}
+    
     /**
      * Make a order with a specific quantity
      * 
@@ -255,29 +255,11 @@ public class StockManager
      * @param Product product
      */
     public void AddToOrder(Integer OrderQuantity, Product product){
-
-        if(EnoughStock(product, OrderQuantity)){
-            addProductOrder(OrderQuantity, product);
-            product.sellOrder(OrderQuantity);
-            System.out.println("Order done with success. You have ordered " + OrderQuantity + " of " + product.getName()); 
-            CheckStock(product); 
-        }
-    }
-    /**
-     * Calculate the difference that we need to increment to the stock
-     * 
-     * @param Product product
-     */
-    public void CheckStock(Product product){
-        if(numberInStock(product) < product.getStock()){
-            Integer amount = product.getStock() - product.getQuantity(); 
-            delivery(product, amount);
-            System.out.println("Products in stock: " + product.getQuantity()); 
-        }else{
-            System.out.println("There is enough stock of " + product.getName() + " to make a deliver");    
-        } 
-
-    }
+        EnoughStock(product, OrderQuantity); 
+        addProductOrder(OrderQuantity, product);
+         product.sellOrder(OrderQuantity);
+            System.out.println("Order done with success. You have ordered " + OrderQuantity + " of " + product.getName() + "\n"); 
+        }   
     
     /**
      * Go throught the map and go calling the method AddToOrder
@@ -336,7 +318,7 @@ public class StockManager
         Client bestClient = new Client(); 
         Float aux = 0.0f; 
         
-        for(Client client : clientsSet){
+        for(Client client : clientsList){
             if( client.getMoneySpent() > aux){
                 bestClient = client; 
                 aux = client.getMoneySpent(); 
@@ -360,5 +342,23 @@ public class StockManager
         }
         System.out.println("The best sold product is  " + mostSold.getName());
         return mostSold; 
+    }
+    
+    public ArrayList getClientList(){        
+        return this.clientsList; 
+    }
+    
+    public Client getClient(Integer id){
+        Client c = new Client();
+        boolean aux = false; 
+        Iterator<Client> it = clientsList.iterator(); 
+        while(it.hasNext() && !aux){
+            Client client = it.next();
+            if(client.getId() == id){                
+                aux = true; 
+                c=client; 
+            }            
+        }
+        return c; 
     }
 }

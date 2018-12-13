@@ -1,5 +1,7 @@
-import java.util.ArrayList; 
+import java.util.Set; 
+import java.util.HashSet; 
 import java.util.Objects; 
+import java.util.Iterator; 
 /**
  * Model some details of a product sold by a company.
  * 
@@ -14,8 +16,8 @@ public class Product
     protected String name;
     // The quantity of this product in stock.
     protected Integer quantity;
-    // ArrayList of Comments 
-    protected ArrayList<Comments> commentsList; 
+    // A Set of Comments 
+    protected Set<Comments> commentsList; 
     //Stock of product
     protected Integer stockMin;
     //Price of product
@@ -35,7 +37,7 @@ public class Product
         this.id = 0;
         this.name = "";
         this.quantity = 0;
-        this.commentsList = new ArrayList<Comments>(); 
+        this.commentsList = new HashSet<Comments>(); 
         this.stockMin=0;        
         this.price=0;
         this.discount=0.0f;
@@ -63,7 +65,7 @@ public class Product
         this.id = id;
         this.name = name;
         this.quantity = quantity;
-        this.commentsList = new ArrayList<Comments>(); 
+        this.commentsList = new HashSet<Comments>(); 
         this.stockMin=stockMin;
         try{
             this.price=price;
@@ -236,11 +238,12 @@ public class Product
      */
     public boolean HasCommented(String nameClient){
         boolean aux = false; 
-        for (Comments comment : commentsList){
-            if(comment.getNameClient() == nameClient){
-                aux=true; 
-            }   
+        Iterator<Comments> it = commentsList.iterator(); 
+        while(it.hasNext() && !aux){
+            it.next().getNameClient().equals(nameClient);
+            aux=true; 
         }
+        
         return aux; 
     }
 

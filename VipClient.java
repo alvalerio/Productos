@@ -46,11 +46,11 @@ public class VipClient extends Client
         }
     }
     
-    
+    @Override
     public ArrayList PrepareOrder(){
         
         ArrayList favouriteOrder = new ArrayList<Product>(); 
-        for(Product product : this.favouriteProducts.values()){
+        for(Product product : favouriteProducts.values()){
             favouriteOrder.add(product);            
         }
     
@@ -65,8 +65,8 @@ public class VipClient extends Client
         return totalPrice; 
     }
     
- 
-    public void MakeVipOrder(ArrayList<Product> favouriteOrder){
+    @Override
+    public void MakeOrder(ArrayList<Product> favouriteOrder){
         StockManager SM = StockManager.getInstance();
         this.moneySpent += this.GetPriceOrder(favouriteOrder); 
         SM.MakeVipOrder(favouriteOrder);

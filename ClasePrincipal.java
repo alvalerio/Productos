@@ -8,26 +8,46 @@
  */
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList; 
 
 public class ClasePrincipal {
-	public static void main(String[] args) {
-		/**  
-		instancia asociada al fichero de entrada inicio.txt
-		*/
-		StockManager sm = null;
-		Cargador cargador = new Cargador(sm);
-		try {
-			/**  
-			Método que procesa línea a línea el fichero de entrada inicio.txt
-			*/
-		     FicheroCarga.procesarFichero("init.txt", cargador);
-		     sm = cargador.obtenerStockManager();
-		}
-		catch (FileNotFoundException valor)  {
-			System.err.println ("Excepción capturada al procesar fichero: "+valor.getMessage());
-		}
-		catch (IOException valor)  {
-			System.err.println ("Excepción capturada al procesar fichero: "+valor.getMessage());
-		}
-	}
+    public static void main(String[] args) {
+        /**  
+        instancia asociada al fichero de entrada inicio.txt
+        */
+        StockManager sm = null;
+        Cargador cargador = new Cargador(sm);
+        try {
+            /**  
+            Método que procesa línea a línea el fichero de entrada inicio.txt
+            */
+             FicheroCarga.procesarFichero("init.txt", cargador);
+             sm = cargador.obtenerStockManager();
+        }
+        catch (FileNotFoundException valor)  {
+            System.err.println ("Excepción capturada al procesar fichero: "+valor.getMessage());
+        }
+        catch (IOException valor)  {
+            System.err.println ("Excepción capturada al procesar fichero: "+valor.getMessage());
+        }
+        
+        
+        /*//////////////////////SIMULATION///////////////////////////*/
+         System.err.println ("Starting Simulation...");
+         ArrayList<Client> cl = sm.getClientList(); 
+         Integer turn = 0; 
+         
+         for(Client client : cl){
+             turn += 1; 
+             System.out.println ("Starting Turn " + turn);
+             System.out.println ("Starting turn of client : " + client.getName());
+             client.MakeOrder( client.PrepareOrder());
+             System.out.println(client.getName());
+            }
+         
+          
+         
+         
+    }
+
 }

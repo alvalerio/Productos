@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map; 
 import java.util.Iterator; 
 import java.util.Objects; 
+import java.util.ArrayList; 
 /**
  * Write a description of class Client here.
  *
@@ -236,15 +237,7 @@ public class Client
      * @param   OrderQuantity The quantity to the product of the order
      * @param   SM The Stock Manager who sells products     
      */
-    public void MakeOrder(String namebyClient, Integer OrderQuantity, StockManager SM){
-       
-        if(favouriteProducts.containsKey(namebyClient)){
-            Product product = new Product(); 
-            product = FindProductbyName(namebyClient);
-            SM.AddToOrder(OrderQuantity, product);
-        }else{
-            System.out.println("You only can order product whose is in your Favourite List");    
-        }
+    public void MakeOrder(ArrayList<Product> favouriteOrder){
 
     }
 /**
@@ -274,5 +267,9 @@ public class Client
         Client client = (Client) obj; 
      return (client.getName().equals(this.getName()) && client.getId() == (this.getId()));
         
+    }
+    
+    public ArrayList PrepareOrder(){
+        return null; 
     }
 }

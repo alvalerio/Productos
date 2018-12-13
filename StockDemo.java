@@ -21,14 +21,16 @@ public class StockDemo
     }
     
     public void Entrega3DEMO(){
-    System.out.println("Preparing the order...\n");   
-    
+    System.out.println("Preparing the Simulation...\n"); 
     
     
     
     
     
     }
+    
+    
+    /*
     public void Entrega2Demo(){
   
      System.out.println("Preparing the order...\n");   
@@ -288,7 +290,6 @@ public class StockDemo
     /**
      * @return The stock manager.
      */
-    
     public StockManager getManager()
     {
         return sww;

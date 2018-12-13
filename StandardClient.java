@@ -12,15 +12,15 @@ import java.util.*;
  */
 public class StandardClient extends Client
 {
- 
+
     /**
      * Constructor for objects of class StandardClient
      */
     public StandardClient()
     {
-     super();
+        super();
     }
-    
+
     /**
      * Constructor Parametrized for objects of class Client
      * @param name The client's name
@@ -32,7 +32,7 @@ public class StandardClient extends Client
         super(id, name, age, actualLocation);  
 
     }
-    
+
     @Override
     public void MakeOrderFavourites(StockManager SM){
         SM.getInstance();
@@ -43,18 +43,30 @@ public class StandardClient extends Client
         SM.FavouriteOrder(favouriteOrder);
 
     }
-    
+
+    @Override
     public ArrayList PrepareOrder(){
         ArrayList aux = new ArrayList<Product>(); 
         ArrayList favouriteOrder = new ArrayList<Product>(); 
-        for(Product product : this.favouriteProducts.values()){
+        for(Product product : favouriteProducts.values()){
             aux.add(product); 
         }
+
         Collections.sort(aux, Collections.reverseOrder(new PriceComparator())); 
         favouriteOrder.add(aux.get(0)); 
+        try{
+            
+        
         favouriteOrder.add(aux.get(1)); 
+        
+        }catch (IndexOutOfBoundsException e){
+            
+        //favouriteOrder.add(aux.get(0)); 
+            
+        }
         return favouriteOrder; 
     }
+
     public Float GetPriceOrder(ArrayList<Product> favouriteOrder){
         Float totalPrice = 0.0f;
         for(Product product : favouriteOrder){
@@ -62,20 +74,17 @@ public class StandardClient extends Client
         }
         return totalPrice;
     }
-    
-    public void MakeStandardOrder(ArrayList<Product> favouriteOrder){
+
+    @Override
+    public void MakeOrder(ArrayList<Product> favouriteOrder){
         StockManager SM=StockManager.getInstance();
-        
-        Integer aux=0;
         for(Product product : favouriteOrder){
-            if(aux<2){
-            SM.MakeStandardOrder(product);            
-            aux++;
+                SM.MakeStandardOrder(product);            
             }   
-        }
+        
         this.moneySpent += GetPriceOrder(favouriteOrder); 
     }
-    
+
     /**
      * Post a comment in determined products 
      *
@@ -85,37 +94,35 @@ public class StandardClient extends Client
      *       
      */
     public void PostComment(String namebyClient){
-        
+
         if(favouriteProducts.containsKey(namebyClient)){
             Product product = new Product(); 
             product = FindProductbyName(namebyClient);
             if(product instanceof FoodProduct){
                 System.out.println("Error. The product is a FoodProduct so you can't comment it");
             }else{                               
-            CheckPoint(product); 
-        }
+                CheckPoint(product); 
+            }
         }else {
             System.out.println("Error. You must add the product to favourite to comment"); 
         }
     }
-    
+
     private void CheckPoint(Product product){
-        
+
         Integer point = (product.name.length()%5)+1;
-        System.out.println(point); 
-        System.out.println(product.name.length()); 
         String comment = StockManager.getInstance().getDefaultComments(point-1);
-        
+
         if(product instanceof HomeProduct){
             HomeProduct hp = (HomeProduct)product;
-        if(point >= 4){            
-            hp.Like();
-        }else if(point <= 2){
-            hp.Unlike(); 
-        }
+            if(point >= 4){            
+                hp.Like();
+            }else if(point <= 2){
+                hp.Unlike(); 
+            }
         }
         product.PostComment(comment, this.name, point);
- 
+
     }
-    
+
 }

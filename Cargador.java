@@ -253,8 +253,10 @@ public class Cargador {
      */
     private void crearProductClient(int numCampos, List<String> vCampos){
         System.out.println("Leido ProductClient: " + vCampos.get(3) + "\n");
-        //getProduct HE CAMBIAU YOU
+        
         Product p = stockmanager.getProduct(Integer.parseInt(vCampos.get(2)));
+        Client c = stockmanager.getClient(Integer.parseInt(vCampos.get(1)));
+        c.AddProductFavourite(p,vCampos.get(3));
         //asociar el producto p al cliente con id = Integer.parseInt(vCampos.get(1))
     }
 
