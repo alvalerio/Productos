@@ -1,4 +1,5 @@
 import java.util.ArrayList; 
+import java.util.Objects; 
 /**
  * Model some details of a product sold by a company.
  * 
@@ -257,5 +258,17 @@ public class Product
     
     public Integer getNumberOfComments(){
         return commentsList.size(); 
+    }
+    
+    @Override
+    public int hashCode(){
+      return Objects.hash(this.id, this.name); 
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Product product = (Product) obj; 
+     return ((product.getName().equals(this.getName())) && (product.getID() == this.getID()) && (product.discount == this.discount));
+        
     }
 }

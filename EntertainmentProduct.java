@@ -25,4 +25,6 @@ public class EntertainmentProduct extends Product
         this.discount=0.2f;
 
     }
+    
+    
 }

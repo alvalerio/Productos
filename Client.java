@@ -2,6 +2,7 @@ import java.util.Collection;
 import java.util.HashMap; 
 import java.util.Map; 
 import java.util.Iterator; 
+import java.util.Objects; 
 /**
  * Write a description of class Client here.
  *
@@ -251,5 +252,17 @@ public class Client
         }
         SM.FavouriteOrder(favouriteOrder);
 
+    }
+    
+    @Override
+    public int hashCode(){
+      return Objects.hash(this.id, this.name); 
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Client client = (Client) obj; 
+     return (client.getName().equals(this.getName()) && client.getId() == (this.getId()));
+        
     }
 }
