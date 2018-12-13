@@ -79,7 +79,9 @@ public class StandardClient extends Client
     public void MakeOrder(ArrayList<Product> favouriteOrder){
         StockManager SM=StockManager.getInstance();
         for(Product product : favouriteOrder){
-                SM.MakeStandardOrder(product);            
+                SM.MakeStandardOrder(product);
+                IncreaseOrderNumber(); 
+                PostComment(product);
             }   
         
         this.moneySpent += GetPriceOrder(favouriteOrder); 
@@ -93,11 +95,9 @@ public class StandardClient extends Client
      * @param   points Points to rive [Range 1-5]
      *       
      */
-    public void PostComment(String namebyClient){
+    public void PostComment(Product product){
 
-        if(favouriteProducts.containsKey(namebyClient)){
-            Product product = new Product(); 
-            product = FindProductbyName(namebyClient);
+        if(favouriteProducts.containsValue(product)){
             if(product instanceof FoodProduct){
                 System.out.println("Error. The product is a FoodProduct so you can't comment it");
             }else{                               

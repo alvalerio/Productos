@@ -20,6 +20,7 @@ public class Client
     protected String actualLocation;
     protected Map<String, Product> favouriteProducts; 
     protected Float moneySpent; 
+    protected Integer orderNumber; 
 
     /**
      * Constructor for objects of class Client
@@ -32,6 +33,7 @@ public class Client
         this.actualLocation="";
         this.favouriteProducts = new HashMap<>(); 
         this.moneySpent= 0.0f; 
+        this.orderNumber = 0; 
 
     }
 
@@ -49,6 +51,7 @@ public class Client
         this.actualLocation=actualLocation;
         this.favouriteProducts = new HashMap<>(); 
         this.moneySpent= 0.0f; 
+        this.orderNumber = 0; 
 
     }
 
@@ -181,6 +184,15 @@ public class Client
     public void setActualLocation(String actualLocation){
         this.actualLocation=actualLocation;
     }
+    
+        /**
+     * Get orderNumber
+     *
+     * @return    orderNumber
+     */
+    public Integer getOrderNumber(){
+        return this.orderNumber;
+    }
     /**
      * Show every product in the favourite list of the client
      * 
@@ -271,5 +283,9 @@ public class Client
     
     public ArrayList PrepareOrder(){
         return null; 
+    }
+    
+    protected void IncreaseOrderNumber(){
+        this.orderNumber++; 
     }
 }

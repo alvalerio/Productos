@@ -27,12 +27,11 @@ public class VipClient extends Client
 
     }
     
-    public void PostComment(String namebyClient){
+    public void PostComment(Product product){
 
-        if(favouriteProducts.containsKey(namebyClient)){
-            Product product = new Product(); 
-            product = FindProductbyName(namebyClient);
+        if(favouriteProducts.containsValue(product)){
             if(product instanceof FoodProduct){
+                
                 System.out.println("Error. The product is a FoodProduct so you can't comment it");
             }else{
                 product.PostComment("I really like this product", this.name, 4);
@@ -51,7 +50,8 @@ public class VipClient extends Client
         
         ArrayList favouriteOrder = new ArrayList<Product>(); 
         for(Product product : favouriteProducts.values()){
-            favouriteOrder.add(product);            
+            favouriteOrder.add(product);
+            PostComment(product);
         }
     
         return favouriteOrder; 
@@ -70,8 +70,8 @@ public class VipClient extends Client
         StockManager SM = StockManager.getInstance();
         this.moneySpent += this.GetPriceOrder(favouriteOrder); 
         SM.MakeVipOrder(favouriteOrder);
+        IncreaseOrderNumber(); 
     }
-    
-    
+        
     
 }

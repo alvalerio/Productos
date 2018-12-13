@@ -37,9 +37,8 @@ public class StockManager
         this.stock = new ArrayList<Product>();
         this.order = new HashMap<Product, Integer>();
         this.clientsList = new ArrayList<Client>();
-        this.defaultComments = new ArrayList<String>(); 
+        this.defaultComments = new ArrayList<String>();  
         InitializeDefaultComments();
-        
     }
     
     private StockManager(String name){
@@ -48,8 +47,8 @@ public class StockManager
         this.stock = new ArrayList<Product>();
         this.order = new HashMap<Product, Integer>();
         this.clientsList = new ArrayList<Client>(); 
-        this.defaultComments = new ArrayList<String>(); 
-        InitializeDefaultComments();
+        this.defaultComments = new ArrayList<String>();
+        InitializeDefaultComments(); 
     }
     
     public static StockManager getInstanceParametrized(String name){
@@ -288,14 +287,6 @@ public class StockManager
         AddToOrder(50, product);     
     }
     
-    public void InitializeDefaultComments(){
-        this.defaultComments.add("Bad product");
-        this.defaultComments.add("Not very good product");
-        this.defaultComments.add("Good product");
-        this.defaultComments.add("Very good product");
-        this.defaultComments.add("Excellent product");
-    }
-    
     public String getDefaultComments (Integer points){
        return this.defaultComments.get(points);         
     }
@@ -360,5 +351,26 @@ public class StockManager
             }            
         }
         return c; 
+    }
+    
+    public Client getOrderNumber(){
+        Integer aux = 0; 
+        Client best = new Client(); 
+        for(Client client: clientsList){
+         if(client.getOrderNumber()  > aux){
+             best = client; 
+             aux = client.getOrderNumber();
+            }            
+        }
+     return best;    
+        
+    }
+    
+    public void InitializeDefaultComments(){
+        this.defaultComments.add("Bad product");
+        this.defaultComments.add("Not very good product");
+        this.defaultComments.add("Good product");
+        this.defaultComments.add("Very good product");
+        this.defaultComments.add("Excellent product");
     }
 }

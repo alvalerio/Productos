@@ -240,8 +240,10 @@ public class Product
         boolean aux = false; 
         Iterator<Comments> it = commentsList.iterator(); 
         while(it.hasNext() && !aux){
-            it.next().getNameClient().equals(nameClient);
-            aux=true; 
+            Comments c = it.next();
+            if(c.getNameClient().equals(nameClient)){
+                aux=true;       
+            }            
         }
         
         return aux; 

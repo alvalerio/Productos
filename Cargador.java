@@ -1,5 +1,4 @@
 import java.util.List;
-
 /**
  * Clase creada para ser usada en la utilidad cargador
  * contiene el main del cargador. Se crea una instancia de la clase StockManager, una instancia de la clase Cargador
@@ -126,10 +125,6 @@ public class Cargador {
     private void crearEntertainmentProduct(int numCampos, List<String> vCampos){
         System.out.println("Creado EntertainmentProduct: " + vCampos.get(2) + "\n");
         //inicializar EntertainmentProduct
-        /*Product product = new EntertainmentProduct(Integer.parseInt(vCampos.get(1)),
-                vCampos.get(2), Integer.parseInt(vCampos.get(3)),
-                Integer.parseInt(vCampos.get(4)), Integer.parseInt(vCampos.get(5)));
-        stockmanager.addProduct(product);*/
         
         try{
             Product product = new EntertainmentProduct(Integer.parseInt(vCampos.get(1)),
@@ -164,7 +159,6 @@ public class Cargador {
                 Integer.parseInt(vCampos.get(4)), Integer.parseInt(vCampos.get(5)),
                 vCampos.get(6));
              stockmanager.addProduct(product);
-        
         }
         
         catch(NumberFormatException e){
@@ -177,11 +171,6 @@ public class Cargador {
                 vCampos.get(6));
              stockmanager.addProduct(product);
         }
-        /*Product product = new HomeProduct(Integer.parseInt(vCampos.get(1)),
-                vCampos.get(2), Integer.parseInt(vCampos.get(3)),
-                Integer.parseInt(vCampos.get(4)), Integer.parseInt(vCampos.get(5)),
-                vCampos.get(6));
-        stockmanager.addProduct(product);*/
     }
 
     /**
@@ -191,13 +180,6 @@ public class Cargador {
      */
     private void crearFoodProduct(int numCampos, List<String> vCampos){
         System.out.println("Creado FoodProduct: " + vCampos.get(2) + "\n");
-        //inicializar EntertainmentProduct
-        /*Product product = new FoodProduct(Integer.parseInt(vCampos.get(1)),
-                vCampos.get(2), Integer.parseInt(vCampos.get(3)),
-                Integer.parseInt(vCampos.get(4)), Integer.parseInt(vCampos.get(5)),
-                vCampos.get(6));
-        stockmanager.addProduct(product);*/
-        
         try{
             Product product = new FoodProduct(Integer.parseInt(vCampos.get(1)),
                 vCampos.get(2), Integer.parseInt(vCampos.get(3)),
@@ -240,7 +222,6 @@ public class Cargador {
     private void crearVipClient(int numCampos, List<String> vCampos){
         System.out.println("Creado VipClient: " + vCampos.get(1) + "\n");
         //inicializar VipClient
-        //StandardClient E CAMBIAU YOU
         VipClient client = new VipClient(Integer.parseInt(vCampos.get(1)),
                 vCampos.get(2), Integer.parseInt(vCampos.get(3)), vCampos.get(4));
         stockmanager.addClient(client);
