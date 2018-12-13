@@ -32,15 +32,7 @@ public class Comments
     {
         this.text = text; 
         this.nameClient = nameClient; 
-        if(points<=0){
-            points=1;
-            this.points = points; 
-        }else if(points>5){
-            points=5;
-            this.points = points; 
-        }else{
-            this.points = points; 
-        }
+        CheckCommentsPoints(points);
 
     }
     /**
@@ -86,5 +78,18 @@ public class Comments
     {
         return this.points; 
 
+    }
+    
+    public void CheckCommentsPoints(Integer points){
+        if(points<=0){
+            points=1;
+            this.points = points; 
+        }else if(points>5){
+            points=5;
+            this.points = points; 
+        }else{
+            this.points = points; 
+        }
+        
     }
 }
