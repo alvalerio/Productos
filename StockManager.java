@@ -266,11 +266,4 @@ public class StockManager
        return this.defaultComments.get(points);  
         
     }
-    
-    public Integer BestSeller(){
-        Integer best = 0; 
-        
-        
-        return best; 
-    }
 }
