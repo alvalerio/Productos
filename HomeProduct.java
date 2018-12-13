@@ -5,7 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class HomeProduct extends Product
+public class HomeProduct extends Product implements Likeable
 {
     private String homePart;
     private Integer likes;
@@ -31,28 +31,31 @@ public class HomeProduct extends Product
         this.unlikes = 0; 
     }
     /**
+     * Get the home part
+     * @return The home part that is applied the product.
+     *
+    public String getHomePart(){
+        return this.homePart;
+    }
+     /**
      * Increase in 1 the likes
      */
+    @Override
     public void Like(){
         this.likes++;
     }
     /**
      * Decrease in 1 the likes
      */
+    @Override
     public void Unlike(){
         this.unlikes++;
-    }
-    /**
-     * Get the home part
-     * @return The home part that is applied the product.
-     */
-    public String getHomePart(){
-        return this.homePart;
     }
     /**
      * Get the likes
      * @return The likes of the product.
      */
+    @Override
     public Integer getLikes(){
         return this.likes;
     }
@@ -60,6 +63,7 @@ public class HomeProduct extends Product
      * Get the unlikes
      * @return The unlikes of the product.
      */
+    @Override
     public Integer getUnlikes(){
         return this.unlikes;
     }

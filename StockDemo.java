@@ -67,10 +67,15 @@ public class StockDemo
      StClient.MakeStandardOrder(StClient.PrepareOrder());
      System.out.println("Order done with success\n");
      
-     System.out.println("Posting comments...");
+     System.out.println("Posting comments vip ...");
      VipClient.PostComment("hp");
      VipClient.PostComment("ep");
      VipClient.PostComment("fp");
+     
+     System.out.println("Posting comments std ...");
+     StClient.PostComment("hps"); 
+     StClient.PostComment("eps");
+     StClient.PostComment("fps");
      
      
     }

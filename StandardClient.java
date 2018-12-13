@@ -75,4 +75,35 @@ public class StandardClient extends Client
         }
         
     }
+    
+    /**
+     * Post a comment in determined products 
+     *
+     * @param   namebyClient A name given by the client to the product
+     * @param   comment Comment to be posted
+     * @param   points Points to rive [Range 1-5]
+     *       
+     */
+    public void PostComment(String namebyClient){
+        
+        if(favouriteProducts.containsKey(namebyClient)){
+            Product product = new Product(); 
+            product = FindProductbyName(namebyClient);
+                                           
+            CheckPoint(product); 
+            
+        }else {
+            System.out.println("Error. You must add the product to favourite to comment"); 
+        }
+    }
+    
+    private void CheckPoint(Product product){
+        
+        Integer point = (this.name.length()%5)+1;
+        
+        String comment = StockManager.getInstance().getDefaultComments(point-1);
+        product.PostComment(comment, this.name, point);
+ 
+    }
+    
 }

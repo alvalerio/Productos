@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class FoodProduct extends Product
+public class FoodProduct extends Product implements Likeable
 {
     private String ExpirationMonth; 
     private Integer likes;
@@ -35,18 +35,7 @@ public class FoodProduct extends Product
         this.unlikes = 0; 
 
     }
-    /**
-     * Increase in 1 the likes
-     */
-    public void Like(){
-        this.likes++;
-    }
-    /**
-     * Decrease in 1 the likes
-     */
-    public void Unlike(){
-        this.unlikes++;
-    }
+   
     /**
      * Get the ExpirationMonth
      * @return The ExpirationMonth of the food product.
@@ -54,10 +43,26 @@ public class FoodProduct extends Product
     public String getExpirationMonth(){
         return this.ExpirationMonth;
     }
+    
+   /**
+     * Increase in 1 the likes
+     */
+    @Override
+    public void Like(){
+        this.likes++;
+    }
+    /**
+     * Decrease in 1 the likes
+     */
+    @Override
+    public void Unlike(){
+        this.unlikes++;
+    }
     /**
      * Get the likes
      * @return The likes of the product.
      */
+    @Override
     public Integer getLikes(){
         return this.likes;
     }
@@ -65,8 +70,8 @@ public class FoodProduct extends Product
      * Get the unlikes
      * @return The unlikes of the product.
      */
+    @Override
     public Integer getUnlikes(){
         return this.unlikes;
     }
-  
 }
