@@ -34,7 +34,7 @@ public class StockDemo
      System.out.println("Preparing the order...\n");   
         
      System.out.println("Getting the price of the order of a Vip Client...");
-     VipClient VipClient = new VipClient(); 
+     VipClient VipClient = new VipClient(2, "BICTOR", 21, "VVA"); 
      Product hp = new HomeProduct(1, "Nintendo DS", 100,10, 1000, ""); 
      Product ep = new EntertainmentProduct(2, "XBOX ONE", 100, 10, 100); 
      Product fp = new FoodProduct(3, "RA", 100, 10, 10, ""); 
@@ -52,7 +52,7 @@ public class StockDemo
      
      System.out.println("Getting the price of the order of a Standard Client...");
      
-     StandardClient StClient = new StandardClient();    
+     StandardClient StClient = new StandardClient(1, "Dukino", 20, "CBZL");    
      
      StClient.AddProductFavourite(hp,"hps");
      StClient.AddProductFavourite(ep, "eps");   
@@ -82,6 +82,14 @@ public class StockDemo
      StClient.PostComment("eps");
      StClient.PostComment("fps");
      
+     StandardClient StClientCom = new StandardClient(3, "RAFA", 7, "LADRON"); 
+     sww.addClient(StClientCom);
+     StClientCom.AddProductFavourite(ep,"hpcomm");
+     StClientCom.PostComment("hpcomm");
+     
+     
+     System.out.println("Getting more commented product ...");
+     sww.getMostCommented();
      
     }
     /*

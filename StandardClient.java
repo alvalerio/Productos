@@ -113,7 +113,7 @@ public class StandardClient extends Client
         }else if(point <= 2){
             hp.Unlike(); 
         }
-    }
+        }
         product.PostComment(comment, this.name, point);
  
     }

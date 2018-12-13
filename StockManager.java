@@ -263,7 +263,19 @@ public class StockManager
     }
     
     public String getDefaultComments (Integer points){
-       return this.defaultComments.get(points);  
-        
+       return this.defaultComments.get(points);         
     }
+    
+    public void getMostCommented(){
+        Integer aux = 0; 
+        Product p = new Product(); 
+        for(Product product : stock){
+            if(product.getNumberOfComments() > aux){
+            aux = product.getNumberOfComments(); 
+            p = product; 
+        }                    
+        }  
+        System.out.println("The product more commented is:" + p.getName()); 
+    }
+    
 }

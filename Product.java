@@ -254,4 +254,8 @@ public class Product
         }
 
     }
+    
+    public Integer getNumberOfComments(){
+        return commentsList.size(); 
+    }
 }
