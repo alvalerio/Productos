@@ -89,9 +89,11 @@ public class StandardClient extends Client
         if(favouriteProducts.containsKey(namebyClient)){
             Product product = new Product(); 
             product = FindProductbyName(namebyClient);
-                                           
+            if(product instanceof FoodProduct){
+                System.out.println("Error. The product is a FoodProduct so you can't comment it");
+            }else{                               
             CheckPoint(product); 
-            
+        }
         }else {
             System.out.println("Error. You must add the product to favourite to comment"); 
         }
@@ -99,9 +101,19 @@ public class StandardClient extends Client
     
     private void CheckPoint(Product product){
         
-        Integer point = (this.name.length()%5)+1;
-        
+        Integer point = (product.name.length()%5)+1;
+        System.out.println(point); 
+        System.out.println(product.name.length()); 
         String comment = StockManager.getInstance().getDefaultComments(point-1);
+        
+        if(product instanceof HomeProduct){
+            HomeProduct hp = (HomeProduct)product;
+        if(point >= 4){            
+            hp.Like();
+        }else if(point <= 2){
+            hp.Unlike(); 
+        }
+    }
         product.PostComment(comment, this.name, point);
  
     }

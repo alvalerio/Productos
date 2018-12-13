@@ -74,4 +74,6 @@ public class FoodProduct extends Product implements Likeable
     public Integer getUnlikes(){
         return this.unlikes;
     }
+    
+    
 }

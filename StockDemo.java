@@ -27,9 +27,9 @@ public class StockDemo
         
      System.out.println("Getting the price of the order of a Vip Client...");
      VipClient VipClient = new VipClient(); 
-     Product hp = new HomeProduct(1, "", 1,1, 100, ""); 
-     Product ep = new EntertainmentProduct(2, "", 1, 1, 100); 
-     Product fp = new FoodProduct(3, "", 1, 1, 100, ""); 
+     Product hp = new HomeProduct(1, "Nintendo DS", 1,1, 100, ""); 
+     Product ep = new EntertainmentProduct(2, "XBOX ONE", 1, 1, 100); 
+     Product fp = new FoodProduct(3, "RA", 1, 1, 100, ""); 
     
      VipClient.AddProductFavourite(hp, "hp");
      VipClient.AddProductFavourite(ep, "ep");   
@@ -45,9 +45,9 @@ public class StockDemo
      System.out.println("Getting the price of the order of a Standard Client...");
      
      StandardClient StClient = new StandardClient();
-     Product Homep = new HomeProduct(4, "", 1,1, 1000, ""); 
-     Product Entertainmentp = new EntertainmentProduct(5, "", 1, 1, 100); 
-     Product Foodp = new FoodProduct(6, "", 1, 1, 10, ""); 
+     Product Homep = new HomeProduct(4, "Nintendo DS", 1,1, 1000, ""); 
+     Product Entertainmentp = new EntertainmentProduct(5, "XBOX ONE", 1, 1, 100); 
+     Product Foodp = new FoodProduct(6, "RA", 1, 1, 10, ""); 
      
      
      StClient.AddProductFavourite(Homep,"hps");

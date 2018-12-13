@@ -25,4 +25,5 @@ public interface Likeable
      * @return The unlikes of the product.
      */
     public Integer getUnlikes();
+    
 }
