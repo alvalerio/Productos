@@ -21,6 +21,8 @@ public class Product
     protected Integer price;
     //Discount of product
     protected Float discount;
+    //Times sold 
+    protected Integer soldCount; 
     /**
      * Constructor for objects of class Product.
      * The initial stock quantity is zero.
@@ -35,7 +37,8 @@ public class Product
         this.commentsList = new ArrayList<Comments>(); 
         this.stockMin=0;        
         this.price=0;
-        //this.discount=0.0f;
+        this.discount=0.0f;
+        this.soldCount=0; 
     }
 
     /**
@@ -69,7 +72,8 @@ public class Product
             System.out.println(e.getMessage()); 
         }
         
-       // this.discount=0.0f;
+       this.discount=0.0f;
+       this.soldCount=0; 
     }
 
     /**
@@ -120,7 +124,26 @@ public class Product
     public Float getDiscount(){
         return this.discount;
     }
-
+    /**
+     * Get soldCount
+     * @return The times a product was sold.
+     */
+    public Integer getSoldCount()
+    {
+        return this.soldCount;
+    }
+    /**
+     * Set soldCount
+     * @param Integer _soldCount
+     */
+    public void setSoldCount(Integer _soldCount)
+    {
+        this.soldCount = _soldCount;
+    }
+    
+    public void AddSold(Integer quantity){
+        this.soldCount += quantity;         
+    }
     /**
      * Show the id, name and the quantity in stock
      * @return The id, name and quantity in stock.

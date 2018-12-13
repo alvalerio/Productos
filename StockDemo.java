@@ -20,16 +20,24 @@ public class StockDemo
         sww = sww.getInstance();
     }
     
+    public void Entrega3DEMO(){
+    System.out.println("Preparing the order...\n");   
     
+    
+    
+    
+    
+    
+    }
     public void Entrega2Demo(){
   
      System.out.println("Preparing the order...\n");   
         
      System.out.println("Getting the price of the order of a Vip Client...");
      VipClient VipClient = new VipClient(); 
-     Product hp = new HomeProduct(1, "Nintendo DS", 1,1, 100, ""); 
-     Product ep = new EntertainmentProduct(2, "XBOX ONE", 1, 1, 100); 
-     Product fp = new FoodProduct(3, "RA", 1, 1, 100, ""); 
+     Product hp = new HomeProduct(1, "Nintendo DS", 100,10, 1000, ""); 
+     Product ep = new EntertainmentProduct(2, "XBOX ONE", 100, 10, 100); 
+     Product fp = new FoodProduct(3, "RA", 100, 10, 10, ""); 
     
      VipClient.AddProductFavourite(hp, "hp");
      VipClient.AddProductFavourite(ep, "ep");   
@@ -44,26 +52,23 @@ public class StockDemo
      
      System.out.println("Getting the price of the order of a Standard Client...");
      
-     StandardClient StClient = new StandardClient();
-     Product Homep = new HomeProduct(4, "Nintendo DS", 1,1, 1000, ""); 
-     Product Entertainmentp = new EntertainmentProduct(5, "XBOX ONE", 1, 1, 100); 
-     Product Foodp = new FoodProduct(6, "RA", 1, 1, 10, ""); 
+     StandardClient StClient = new StandardClient();    
      
-     
-     StClient.AddProductFavourite(Homep,"hps");
-     StClient.AddProductFavourite(Entertainmentp, "eps");   
-     StClient.AddProductFavourite(Foodp, "fps"); 
-     
+     StClient.AddProductFavourite(hp,"hps");
+     StClient.AddProductFavourite(ep, "eps");   
+     StClient.AddProductFavourite(fp, "fps");     
      sww.addClient(StClient);
-     sww.addProduct(Homep);
-     sww.addProduct(Entertainmentp);
-     sww.addProduct(Foodp);
+     
+     
      System.out.println(StClient.GetPriceOrder(StClient.PrepareOrder())); 
      
      System.out.println("The price of all order has alredy calculated\n");
      
-     System.out.println("Making the order...");
+     System.out.println("Making the VIP order...");
      VipClient.MakeVipOrder(VipClient.PrepareOrder());
+     
+     System.out.println("/////////////////////////");
+     System.out.println("Making the STANDARD order...");
      StClient.MakeStandardOrder(StClient.PrepareOrder());
      System.out.println("Order done with success\n");
      

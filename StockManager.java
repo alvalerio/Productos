@@ -105,6 +105,7 @@ public class StockManager
     public void addProductOrder(Integer OrderQuantity, Product item)
     {
         order.put(OrderQuantity, item);
+        item.AddSold(OrderQuantity);
     }
 
     /**
@@ -264,5 +265,12 @@ public class StockManager
     public String getDefaultComments (Integer points){
        return this.defaultComments.get(points);  
         
+    }
+    
+    public Integer BestSeller(){
+        Integer best = 0; 
+        
+        
+        return best; 
     }
 }
