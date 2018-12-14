@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Map; 
 import java.util.HashMap; 
@@ -14,7 +13,7 @@ import java.util.Iterator;
  */
 public class StockManager
 {
-    
+
     private String name; 
     // A list of the products.
     private ArrayList<Product> stock;
@@ -22,12 +21,12 @@ public class StockManager
     private Map<Product, Integer> order;
     // An arrayList of the Clients. 
     private ArrayList<Client> clientsList; 
-    
+
     //Singleton
     private static StockManager SM; 
-    
+
     private ArrayList<String> defaultComments; 
-    
+
     /**
      * Initialise the stock manager.
      */
@@ -40,9 +39,9 @@ public class StockManager
         this.defaultComments = new ArrayList<String>();  
         InitializeDefaultComments();
     }
-    
+
     private StockManager(String name){
-     
+
         this.name=name; 
         this.stock = new ArrayList<Product>();
         this.order = new HashMap<Product, Integer>();
@@ -50,34 +49,32 @@ public class StockManager
         this.defaultComments = new ArrayList<String>();
         InitializeDefaultComments(); 
     }
-    
+
     public static StockManager getInstanceParametrized(String name){
-        
+
         if(SM == null){
             SM = new StockManager(name); 
         }
         return SM ;
     }
-    
+
     public static StockManager getInstance(){
-     
+
         if(SM == null){
             SM = new StockManager(); 
-        }/*else{
-         System.out.println("Already exist a instance of StockManager");    
-        }*/
-        
-     return SM;    
+        }
+
+        return SM;    
     }
 
     public void addClient(Client client){
         if(!clientsList.contains(client)){
-        clientsList.add(client); 
+            clientsList.add(client); 
         }else{
             System.out.println("The Client has alredy exists");
         }
     }
-    
+
     /**
      * Add a product to the list.
      * @param item The item to be added.
@@ -90,7 +87,7 @@ public class StockManager
             System.out.println("The product has alredy exists");
         }
     }
-    
+
     /**
      * Delete a product to the list.
      * @param item The item to be deleted.
@@ -103,6 +100,7 @@ public class StockManager
             System.out.println("The product has alredy deleted");
         }
     }
+
     /**
      * 
      */
@@ -113,8 +111,8 @@ public class StockManager
             Product product = it.next(); 
             if(product.equals(item)){
                 aux=true;       
+            }
         }
-    }
         return aux;
     }
 
@@ -130,15 +128,13 @@ public class StockManager
                 aux=true; 
                 Integer aux1 =0;
                 aux1=entry.getValue() + OrderQuantity;
-                System.out.println("ORDER QUANTITY :" + OrderQuantity); 
-                System.out.println("AUX1 :" + aux1); 
                 entry.setValue(aux1);                 
                 item.AddSold(OrderQuantity); 
             }
         }
         if(!aux){
-        order.put(item, OrderQuantity);
-        item.AddSold(OrderQuantity);
+            order.put(item, OrderQuantity);
+            item.AddSold(OrderQuantity);
         }
     }
 
@@ -153,7 +149,6 @@ public class StockManager
         Product ProductoEncontrado=findProduct(product);
         if(ProductoEncontrado!=null){
             ProductoEncontrado.increaseQuantity(amount);
-            System.out.println("Stock aumented with " + amount); 
         }
     }
 
@@ -176,11 +171,11 @@ public class StockManager
             }
         }
         if(aux) {
-         System.out.println("The product does not exist");   
+            System.out.println("The product does not exist");   
         }
         return productReturn;
     }
-    
+
     /**
      * Try to find a product in the stock with the given id.
      * @return The identified product, or null if there is none
@@ -197,8 +192,8 @@ public class StockManager
             }
         }
         if(aux) {
-         System.out.println("The product does not exist");   
-         return null; 
+            System.out.println("The product does not exist");   
+            return null; 
         }
         return productReturn;
     }
@@ -231,35 +226,29 @@ public class StockManager
     }
 
     /**
-     * Print details of all product who has less than the minimun
-     * number of quantity in stock 
-     *
-     * @param product The product to search if there is enough stock
-     * @param quantity The minimun quantity of a product
-     * @return 0.
-     */
-    public void EnoughStock(Product product,Integer orderQuantity)
-    {
-        boolean aux = false; 
-        Integer difference = orderQuantity - product.getQuantity();
-        
-        if(difference >= 0){
-            delivery(product, (product.getQuantity() - product.getStock()) + orderQuantity);                 
-    }}
-    
-    /**
      * Make a order with a specific quantity
      * 
      * @param Integer OrderQuantity The quantity of the product in a order  
      * @param Product product
      */
     public void AddToOrder(Integer OrderQuantity, Product product){
-        EnoughStock(product, OrderQuantity); 
-        addProductOrder(OrderQuantity, product);
-         product.sellOrder(OrderQuantity);
-            System.out.println("Order done with success. You have ordered " + OrderQuantity + " of " + product.getName() + "\n"); 
-        }   
-    
+        if(OrderQuantity < product.getQuantity()){
+            addProductOrder(OrderQuantity, product);
+            product.sellOrder(OrderQuantity);      
+            System.out.println("Order done with success. You have ordered " + OrderQuantity + " of " + product.getName()); 
+        }else{
+            delivery(product, OrderQuantity-product.getQuantity());
+            addProductOrder(OrderQuantity, product);
+            product.sellOrder(OrderQuantity);      
+            System.out.println("Order done with success. You have ordered " + OrderQuantity + " of " + product.getName());      
+        }
+        if(product.getQuantity() < product.getStock()){
+            delivery(product, product.getStock()-product.getQuantity());   
+            System.out.println(
+                "Stock: "+product.getQuantity() +" of " + product.getName() + "\n");
+        }
+    }   
+
     /**
      * Go throught the map and go calling the method AddToOrder
      * 
@@ -272,73 +261,69 @@ public class StockManager
                 System.out.println("The " + entry.getKey().getName() + " is now in order"); 
                 AddToOrder(entry.getValue(),entry.getKey());  
             }else{
-               System.out.println("The " + entry.getKey().getName() + " is not avalible"); 
-            
+                System.out.println("The " + entry.getKey().getName() + " is not avalible"); 
+
             }
         }
     }
-    
+
     public void MakeVipOrder(ArrayList<Product> favouriteOrder){
         for(Product product : favouriteOrder){
             AddToOrder(1, product);
         }
     }
+
     public void MakeStandardOrder(Product product){
         AddToOrder(50, product);     
     }
-    
+
     public String getDefaultComments (Integer points){
-       return this.defaultComments.get(points);         
+        return this.defaultComments.get(points);         
     }
-    
+
     public void getMostCommented(){
         Integer aux = 0; 
         Product p = new Product(); 
         for(Product product : stock){
             if(product.getNumberOfComments() > aux){
-            aux = product.getNumberOfComments(); 
-            p = product; 
-        }                    
+                aux = product.getNumberOfComments(); 
+                p = product; 
+            }                    
         }  
         System.out.println("The product more commented is:" + p.getName()); 
     }
-    
-    
+
     public Client getBestClient(){
-        
         Client bestClient = new Client(); 
         Float aux = 0.0f; 
-        
+
         for(Client client : clientsList){
             if( client.getMoneySpent() > aux){
                 bestClient = client; 
                 aux = client.getMoneySpent(); 
             }                         
         }
-        
-        
+
         System.out.println("The client who spent more money is " + bestClient.getName()); 
-        
         return bestClient; 
     }
-    
-    
+
     public Product getMostSold(){
         Product mostSold = new Product(); 
         for (Map.Entry<Product, Integer> entry : order.entrySet()){
             if(entry.getValue() > mostSold.getSoldCount()){
                 mostSold = entry.getKey(); 
             }
-            
+
         }
         System.out.println("The best sold product is  " + mostSold.getName());
         return mostSold; 
     }
-    
+
     public ArrayList getClientList(){        
         return this.clientsList; 
     }
-    
+
     public Client getClient(Integer id){
         Client c = new Client();
         boolean aux = false; 
@@ -352,20 +337,20 @@ public class StockManager
         }
         return c; 
     }
-    
+
     public Client getOrderNumber(){
         Integer aux = 0; 
         Client best = new Client(); 
         for(Client client: clientsList){
-         if(client.getOrderNumber()  > aux){
-             best = client; 
-             aux = client.getOrderNumber();
+            if(client.getOrderNumber()  > aux){
+                best = client; 
+                aux = client.getOrderNumber();
             }            
         }
-     return best;    
-        
+        return best;    
+
     }
-    
+
     public void InitializeDefaultComments(){
         this.defaultComments.add("Bad product");
         this.defaultComments.add("Not very good product");

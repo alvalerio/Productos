@@ -201,10 +201,10 @@ public class Product
      */
     public void sellOrder(Integer OrderQuantity)
     {
-        if(quantity > OrderQuantity) {
+        if(quantity >= OrderQuantity) {
             quantity = quantity - OrderQuantity;
             System.out.println(
-                "Sold: "+OrderQuantity +" of " + name + " Stock : " + quantity);
+                "Sold: "+OrderQuantity +" of " + name);
         }
         else {
             System.out.println(

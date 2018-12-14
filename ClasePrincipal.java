@@ -39,10 +39,9 @@ public class ClasePrincipal {
          
          for(Client client : cl){
              turn += 1; 
-             System.out.println ("Starting Turn " + turn);
+             System.out.println ("\n" + "\n"+"Starting Turn " + turn);
              System.out.println ("Starting turn of client : " + client.getName());
              client.MakeOrder( client.PrepareOrder());
-             System.out.println(client.getName());
             }
          
           
