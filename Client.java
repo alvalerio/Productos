@@ -79,7 +79,7 @@ public class Client
      */
     public void DeleteProductFavourite(String namebyClient)
     {
-        if(!favouriteProducts.containsKey(namebyClient)){
+        if(favouriteProducts.containsKey(namebyClient)){
             favouriteProducts.remove(namebyClient);   
         }else{
             System.out.println("The product is not a favourite product");
@@ -96,7 +96,7 @@ public class Client
     public boolean findProductFavourite(Product product){
         boolean aux=false;
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
-            if(favouriteProducts.containsKey(product.getName())){
+            if(favouriteProducts.containsValue(product)){
                 aux=true;
             }
         }
@@ -287,5 +287,9 @@ public class Client
     
     protected void IncreaseOrderNumber(){
         this.orderNumber++; 
+    }
+    
+    public Map<String, Product> getFavouriteProductList(){
+        return this.favouriteProducts; 
     }
 }

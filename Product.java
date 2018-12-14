@@ -276,4 +276,8 @@ public class Product
      return ((product.getName().equals(this.getName())) && (product.getID() == this.getID()) && (product.discount == this.discount));
         
     }
+    
+    public Set<Comments> getCommentsSet(){
+        return commentsList; 
+    }
 }
